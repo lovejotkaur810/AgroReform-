@@ -84,17 +84,18 @@ def load_translations(language):
 @app.context_processor
 def inject_translations():
 
-    language = session.get(
-        "language",
-        "en"
+    language = session.get("language", "en")
+    translations = load_translations(language)
+
+    app.logger.info(
+        "Selected language: %s | Translation keys loaded: %s",
+        language,
+        len(translations)
     )
 
     return {
-        "translations":
-            load_translations(language)
+        "translations": translations
     }
-
-
 # ============================================================
 # MONGODB CONNECTION
 # ============================================================
