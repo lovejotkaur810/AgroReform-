@@ -61,8 +61,13 @@ def load_translations(language):
 
     if language not in SUPPORTED_LANGUAGES:
         language = "en"
+        file_path = os.path.join(
+    app.root_path,
+    "translations",
+    f"{language}.json"
+)
 
-    file_path = f"translations/{language}.json"
+    
 
     try:
 
