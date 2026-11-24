@@ -56,36 +56,30 @@ def set_language(language):
 # ============================================================
 # TRANSLATION LOADER
 # ============================================================
-
 def load_translations(language):
 
     if language not in SUPPORTED_LANGUAGES:
         language = "en"
-        file_path = os.path.join(
-    app.root_path,
-    "translations",
-    f"{language}.json"
-)
 
-    
+    file_path = os.path.join(
+        app.root_path,
+        "translations",
+        f"{language}.json"
+    )
 
     try:
-
         with open(
             file_path,
             "r",
             encoding="utf-8"
         ) as file:
-
             return json.load(file)
 
     except (
         FileNotFoundError,
         json.JSONDecodeError
     ):
-
         return {}
-
 
 @app.context_processor
 def inject_translations():
