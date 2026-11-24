@@ -7,13 +7,13 @@ from config import MONGO_URI
 import joblib
 from flask import flash
 from uuid import uuid4
-
+import os
 
 # ============================================================
 # APP CONFIGURATION
 # ============================================================
 
-import os
+
 
 app = Flask(__name__)
 app.secret_key = os.getenv(
