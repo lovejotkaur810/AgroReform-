@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="{{ current_language }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgroReForm — Agricultural Intelligence</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7f5;
+            color: #24332a;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #e1e7e3;
+            padding: 18px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: #2f6f4e;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .brand-text h2 {
+            font-size: 20px;
+            color: #24583d;
+        }
+
+        .brand-text p {
+            font-size: 11px;
+            color: #718078;
+            margin-top: 3px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #365443;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-link:hover {
+            color: #24583d;
+        }
+
+        .language-select {
+            border: 1px solid #d4ddd7;
+            border-radius: 8px;
+            padding: 9px 12px;
+            background: white;
+            color: #31463a;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: linear-gradient(
+                135deg,
+                #24583d,
+                #397958
+            );
+            color: white;
+            padding: 48px 5%;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            padding: 7px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 720px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .container {
+            max-width: 1200px;
+            margin: 35px auto;
+            padding: 0 25px;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+        }
+
+        .section-title h2 {
+            font-size: 22px;
+            color: #294c39;
+        }
+
+        .section-title p {
+            margin-top: 6px;
+            color: #718078;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           STAT CARDS
+        ========================= */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 42px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e0e8e2;
+            border-radius: 15px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(36, 67, 49, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(36, 67, 49, 0.08);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #718078;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #24583d;
+            word-break: break-word;
+        }
+
+        .stat-note {
+            font-size: 11px;
+            color: #8a9890;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           DASHBOARD GRID
+        ========================= */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            margin-bottom: 42px;
+        }
+
+        .panel {
+            background: white;
+            border: 1px solid #e0e8e2;
+            border-radius: 15px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(36, 67, 49, 0.05);
+        }
+
+        .panel h3 {
+            font-size: 17px;
+            color: #294c39;
+            margin-bottom: 7px;
+        }
+
+        .panel-description {
+            color: #7a8780;
+            font-size: 12px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           BAR CHART
+        ========================= */
+
+        .chart-row {
+            margin-bottom: 18px;
+        }
+
+        .chart-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .chart-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            font-size: 12px;
+            margin-bottom: 7px;
+            color: #526158;
+        }
+
+        .chart-label span {
+            word-break: break-word;
+        }
+
+        .chart-label strong {
+            color: #315b43;
+            white-space: nowrap;
+        }
+
+        .chart-track {
+            width: 100%;
+            height: 10px;
+            background: #edf2ee;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .chart-bar {
+            height: 100%;
+            width: 0;
+            background: #4c8b68;
+            border-radius: 20px;
+            transition: width 0.8s ease;
+        }
+
+        /* =========================
+           PROBLEM LIST
+        ========================= */
+
+        .problem-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .problem-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 13px 15px;
+            background: #f7faf8;
+            border: 1px solid #e5ebe7;
+            border-radius: 10px;
+        }
+
+        .problem-name {
+            font-size: 13px;
+            color: #405148;
+            word-break: break-word;
+        }
+
+        .problem-count {
+            min-width: 32px;
+            height: 28px;
+            padding: 0 8px;
+            border-radius: 7px;
+            background: #e2eee6;
+            color: #2d6447;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* =========================
+           INTELLIGENCE SECTION
+        ========================= */
+
+        .intelligence-panel {
+            background: #ffffff;
+            border: 1px solid #dfe8e1;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 42px;
+        }
+
+        .intelligence-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 22px;
+        }
+
+        .insight-card {
+            background: #f6faf7;
+            border: 1px solid #e0e9e2;
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .insight-card h4 {
+            color: #2e6548;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .insight-card p {
+            color: #66746c;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           EMPTY STATE
+        ========================= */
+
+        .empty {
+            color: #89958e;
+            font-size: 13px;
+            padding: 15px 0;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background: #244634;
+            color: white;
+            padding: 28px 5%;
+            text-align: center;
+        }
+
+        .footer-main {
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .footer-sub {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intelligence-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .header {
+                padding: 15px 20px;
+            }
+
+            .header-right {
+                gap: 8px;
+            }
+
+            .nav-link {
+                display: none;
+            }
+
+            .language-select {
+                padding: 8px 9px;
+            }
+
+            .hero {
+                padding: 35px 20px;
+            }
+
+            .hero h1 {
+                font-size: 27px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-value {
+                font-size: 25px;
+            }
+
+            .panel {
+                padding: 20px;
+            }
+
+            .intelligence-panel {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="header">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                AR
+            </div>
+
+            <div class="brand-text">
+                <h2>AgroReForm</h2>
+                <p>Agricultural Intelligence</p>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+            <a href="{{ url_for('home') }}" class="nav-link">
+                {{ translations.get("home", "Home") }}
+            </a>
+
+            <a href="{{ url_for('farmer') }}" class="nav-link">
+                {{ translations.get("farmer_portal", "Farmer Portal") }}
+            </a>
+
+            <select
+                class="language-select"
+                onchange="changeLanguage(this.value)"
+            >
+
+                {% for code, name in supported_languages.items() %}
+
+                    <option
+                        value="{{ code }}"
+                        {% if current_language == code %}selected{% endif %}
+                    >
+                        {{ name }}
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                AGRICULTURAL INTELLIGENCE PORTAL
+            </div>
+
+            <h1>
+                {{ translations.get(
+                    "agricultural_intelligence",
+                    "Agricultural Intelligence"
+                ) }}
+            </h1>
+
+            <p>
+                {{ translations.get(
+                    "intelligence_description",
+                    "Area-wise agricultural analysis, patterns, statistics and decision-support insights."
+                ) }}
+            </p>
+            <div class="district-selector">
+
+    <label for="districtSelect">
+        Select District
+    </label>
+
+    <select
+        id="districtSelect"
+        onchange="changeDistrict(this.value)"
+    >
+
+        <option value="">
+            All Punjab
+        </option>
+
+        {% for district in available_districts %}
+
+            <option value="{{ district }}">
+                {{ district }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN DASHBOARD
+    ========================= -->
+
+    <main class="container">
+
+
+        <!-- =========================
+             OVERVIEW
+        ========================= -->
+
+        <div class="section-title">
+
+            <h2>
+                Dashboard Overview
+            </h2>
+
+            <p>
+                Real-time summary generated from the AgroReForm agricultural database.
+            </p>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+
+            <!-- TOTAL FARMERS -->
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Total Farmers
+                </div>
+
+                <div class="stat-value">
+                    {{ total_farmers }}
+                </div>
+
+                <div class="stat-note">
+                    Registered farmer profiles
+                </div>
+
+            </div>
+
+
+            <!-- COTTON FARMS -->
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Cotton Farms
+                </div>
+
+                <div class="stat-value">
+                    {{ total_farms }}
+                </div>
+
+                <div class="stat-note">
+                    Registered farm records
+                </div>
+
+            </div>
+
+
+            <!-- COTTON AREA -->
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Cotton Area
+                </div>
+
+                <div class="stat-value">
+                    {{ "%.2f"|format(total_cotton_area) }}
+                </div>
+
+                <div class="stat-note">
+                    Recorded cotton area
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCTION -->
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Total Production
+                </div>
+
+                <div class="stat-value">
+                    {{ "%.2f"|format(total_production) }}
+                </div>
+
+                <div class="stat-note">
+                    Recorded cotton production
+                </div>
+
+            </div>
+
+
+            <!-- CULTIVATION COST -->
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Cultivation Cost
+                </div>
+
+                <div class="stat-value">
+                    ₹{{ "%.2f"|format(total_cultivation_cost) }}
+                </div>
+
+                <div class="stat-note">
+                    Combined recorded expenditure
+                </div>
+
+            </div>
+
+
+            <!-- REVENUE -->
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Estimated Revenue
+                </div>
+
+                <div class="stat-value">
+                    ₹{{ "%.2f"|format(total_revenue) }}
+                </div>
+
+                <div class="stat-note">
+                    Production × recorded selling price
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ANALYTICAL PANELS
+        ========================= -->
+
+        <div class="dashboard-grid">
+
+
+            
+
+            <!-- DISTRICT PRODUCTION -->
+
+            <section class="panel">
+
+                <h3>
+                    District-wise Production
+                </h3>
+
+                <p class="panel-description">
+                    Recorded cotton production across districts.
+                </p>
+
+
+                {% if district_production %}
+
+                    {% set max_production = district_production.values()|max %}
+
+                    {% for district, production in district_production.items() %}
+
+                        <div class="chart-row">
+
+                            <div class="chart-label">
+
+                                <span>
+                                    {{ district }}
+                                </span>
+
+                                <strong>
+                                    {{ "%.2f"|format(production) }}
+                                </strong>
+
+                            </div>
+
+                            <div class="chart-track">
+
+                                <div
+                                    class="chart-bar"
+                                    data-width="{{ (production / max_production * 100) if max_production > 0 else 0 }}"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="empty">
+                        No production data available yet.
+                    </div>
+
+                {% endif %}
+
+            </section>
+
+
+            <!-- AGRICULTURAL PROBLEMS -->
+
+            <section class="panel">
+
+                <h3>
+                    Major Agricultural Problems
+                </h3>
+
+                <p class="panel-description">
+                    Problems reported by farmers during data collection.
+                </p>
+
+
+                {% if problem_counts %}
+
+                    <div class="problem-list">
+
+                        {% for problem, count in problem_counts.items() %}
+
+                            <div class="problem-item">
+
+                                <span class="problem-name">
+                                    {{ problem }}
+                                </span>
+
+                                <span class="problem-count">
+                                    {{ count }}
+                                </span>
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% else %}
+
+                    <div class="empty">
+                        No agricultural problem data available yet.
+                    </div>
+
+                {% endif %}
+
+            </section>
+
+
+           
+
+
+        <!-- =========================
+             AGRICULTURAL INTELLIGENCE
+        ========================= -->
+
+        <section class="intelligence-panel">
+
+            <div class="section-title">
+
+                <h2>
+                    Agricultural Intelligence
+                </h2>
+
+                <p>
+                    From collected farmer data to area-wise agricultural understanding.
+                </p>
+
+            </div>
+
+
+            <div class="intelligence-grid">
+
+
+                <div class="insight-card">
+
+                    <h4>
+                        Area-wise Patterns
+                    </h4>
+
+                    <p>
+                        Recorded agricultural information can be grouped by
+                        district, block and village to identify local patterns.
+                    </p>
+
+                </div>
+
+
+                <div class="insight-card">
+
+                    <h4>
+                        Cost &amp; Production
+                    </h4>
+
+                    <p>
+                        Cultivation expenditure, production and recorded selling
+                        prices can be analysed together to understand farm-level
+                        economic patterns.
+                    </p>
+
+                </div>
+
+
+                <div class="insight-card">
+
+                    <h4>
+                        Agricultural Risks
+                    </h4>
+
+                    <p>
+                        Statistical and machine-learning analysis can be used to
+                        identify patterns associated with agricultural risks
+                        when sufficient data becomes available.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+        <div class="footer-main">
+            AgroReForm — Agricultural Intelligence for Better Farming Decisions
+        </div>
+
+        <div class="footer-sub">
+            Know. Choose. Reform.
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function changeLanguage(language) {
+
+            window.location.href =
+                "{{ url_for('set_language', language='__LANG__') }}"
+                .replace("__LANG__", language);
+
+        }
+        function changeDistrict(district) {
+
+    if (district === "") {
+
+        window.location.href =
+            "{{ url_for('analytics') }}";
+
+        return;
+    }
+
+    window.location.href =
+        "{{ url_for('analytics') }}?district="
+        + encodeURIComponent(district);
+}
+
+
+        /* =========================
+           ANIMATED BAR WIDTHS
+        ========================= */
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const bars = document.querySelectorAll(".chart-bar");
+
+            bars.forEach(function (bar) {
+
+                let width = parseFloat(
+                    bar.getAttribute("data-width")
+                );
+
+                if (isNaN(width)) {
+                    width = 0;
+                }
+
+                if (width < 0) {
+                    width = 0;
+                }
+
+                if (width > 100) {
+                    width = 100;
+                }
+
+                setTimeout(function () {
+                    bar.style.width = width + "%";
+                }, 100);
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+
+<html lang="{{ current_language }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        AgroReForm | {{ translations.get("page_title", "Agricultural Intelligence") }}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="main-header">
+
+        <div class="header-container">
+
+            <a href="/" class="brand">
+
+                <img
+                    src="{{ url_for('static', filename='agroreform_logo.png') }}"
+                    alt="AgroReForm"
+                    class="agroreform-logo"
+                >
+
+            </a>
+
+
+            <nav class="navigation">
+
+                <a href="/" class="nav-active">
+                    {{ translations.get("home", "Home") }}
+                </a>
+
+
+                <div class="language-selector">
+
+                    <span>🌐</span>
+
+                    <select
+                        onchange="window.location.href='/set-language/' + this.value"
+                    >
+
+                        <option value="en"
+                            {% if current_language == "en" %}selected{% endif %}>
+                            English
+                        </option>
+
+                        <option value="pa"
+                            {% if current_language == "pa" %}selected{% endif %}>
+                            ਪੰਜਾਬੀ
+                        </option>
+
+                        <option value="hi"
+                            {% if current_language == "hi" %}selected{% endif %}>
+                            हिन्दी
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main class="hero">
+
+        <div class="hero-overlay"></div>
+
+
+        <div class="hero-content">
+
+
+            <div class="hero-title">
+
+                <h2>
+                    Agro<span>ReForm</span>
+                </h2>
+
+                <p class="hero-subtitle">
+
+                    {{ translations.get(
+                        "hero_subtitle",
+                        "AI-Based Agricultural Risk Analysis"
+                    ) }}<br>
+
+                    {{ translations.get(
+                        "hero_subtitle_line2",
+                        "and Decision Support"
+                    ) }}
+
+                </p>
+
+                <div class="hero-line"></div>
+
+                <p class="hero-tagline">
+
+                    {{ translations.get(
+                        "hero_tagline",
+                        "Better Data. Better Analysis. Better Decisions."
+                    ) }}
+
+                </p>
+
+            </div>
+
+
+            <!-- ================= PORTALS ================= -->
+
+            <section class="portal-section">
+
+
+                <!-- NEW FARMER -->
+
+                <div class="portal-card farmer-card">
+
+                    <div class="portal-icon green-icon">
+
+                        <span>♙</span>
+                        <small>+</small>
+
+                    </div>
+
+
+                    <h3>
+
+                        {{ translations.get(
+                            "new_farmer_title",
+                            "New Farmer"
+                        ) }}<br>
+
+                        {{ translations.get(
+                            "registration",
+                            "Registration"
+                        ) }}
+
+                    </h3>
+
+
+                    <p class="portal-description">
+
+                        {{ translations.get(
+                            "new_farmer_description",
+                            "For farmers using AgroReForm for the first time."
+                        ) }}
+
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            {{ translations.get(
+                                "create_farmer_profile",
+                                "Create Farmer Profile"
+                            ) }}
+                        </li>
+
+                        <li>
+                            {{ translations.get(
+                                "register_farm",
+                                "Register Farm"
+                            ) }}
+                        </li>
+
+                        <li>
+                            {{ translations.get(
+                                "enter_agricultural_data",
+                                "Enter agricultural data"
+                            ) }}
+                        </li>
+
+                        <li>
+                            {{ translations.get(
+                                "generate_farmer_id",
+                                "Generate unique Farmer ID"
+                            ) }}
+                        </li>
+
+                    </ul>
+
+
+                    <a href="/farmer"
+                       class="portal-button green-button">
+
+                        {{ translations.get(
+                            "register_new_farmer",
+                            "Register as New Farmer"
+                        ) }}
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- EXISTING FARMER -->
+
+                <div class="portal-card existing-card">
+
+                    <div class="portal-icon yellow-icon">
+
+                        <span>♙</span>
+
+                    </div>
+
+
+                    <h3>
+
+                        {{ translations.get(
+                            "existing_farmer",
+                            "Existing Farmer"
+                        ) }}<br>
+
+                        {{ translations.get(
+                            "portal",
+                            "Portal"
+                        ) }}
+
+                    </h3>
+
+
+                    <p class="portal-description">
+
+                        {{ translations.get(
+                            "existing_farmer_description",
+                            "For farmers who already have an AgroReForm profile."
+                        ) }}
+
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            {{ translations.get(
+                                "access_existing_profile",
+                                "Access existing profile"
+                            ) }}
+                        </li>
+
+                      
+
+                    </ul>
+
+
+                    <a href="/farmer-login"
+                       class="portal-button yellow-button">
+
+                        {{ translations.get(
+                            "farmer_login",
+                            "Farmer Login"
+                        ) }}
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- INTELLIGENCE -->
+
+                <div class="portal-card intelligence-card">
+
+                    <div class="portal-icon blue-icon">
+
+                        <span>▥</span>
+
+                    </div>
+
+
+                    <h3>
+
+                        {{ translations.get(
+                            "agricultural",
+                            "Agricultural"
+                        ) }}<br>
+
+                        {{ translations.get(
+                            "intelligence_portal",
+                            "Intelligence Portal"
+                        ) }}
+
+                    </h3>
+
+
+                    <p class="portal-description">
+
+                        {{ translations.get(
+                            "intelligence_description",
+                            "For authorized officers, researchers and decision-makers."
+                        ) }}
+
+                    </p>
+
+
+                    <ul>
+
+                        
+                        <li>
+                            {{ translations.get(
+                                "district_level_patterns",
+                                "District-level patterns"
+                            ) }}
+                        </li>
+
+                        
+
+                    </ul>
+
+
+                    <a href="/analytics"
+                       class="portal-button blue-button">
+
+                        {{ translations.get(
+                            "intelligence_portal",
+                            "Intelligence Portal"
+                        ) }}
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="footer">
+
+            <div class="footer-content">
+
+                <div class="footer-brand">
+                    AgroReForm
+                </div>
+
+
+                <div class="footer-message">
+
+                    🌿
+
+                    {{ translations.get(
+                        "footer_message",
+                        "Building a smarter and more resilient agricultural future"
+                    ) }}
+
+                </div>
+
+
+                <div class="footer-line"></div>
+
+            </div>
+
+        </footer>
+
+
+    </main>
+
+</body>
+
+</html>
+

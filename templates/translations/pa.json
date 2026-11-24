@@ -1,0 +1,263 @@
+{
+    "page_title": "ਕਿਸਾਨ ਪੋਰਟਲ",
+    "home": "ਮੁੱਖ ਪੰਨਾ",
+    "farmer_portal": "ਕਿਸਾਨ ਪੋਰਟਲ",
+    "existing_farmer": "ਮੌਜੂਦਾ ਕਿਸਾਨ",
+
+    "farmer_portal_badge": "ਕਿਸਾਨ ਪੋਰਟਲ",
+    "understand_your_farm": "ਆਓ ਤੁਹਾਡੇ ਖੇਤ ਨੂੰ ਸਮਝੀਏ।",
+    "farm_intro": "ਆਪਣੇ ਖੇਤ ਦੀ ਜਾਣਕਾਰੀ ਦਿਓ ਤਾਂ ਜੋ AgroReForm ਖੇਤੀਬਾੜੀ ਦੀਆਂ ਸਥਿਤੀਆਂ, ਖਰਚਿਆਂ, ਉਤਪਾਦਨ ਅਤੇ ਸੰਭਾਵਿਤ ਜੋਖਮਾਂ ਦੇ ਪੈਟਰਨਾਂ ਦਾ ਵਿਸ਼ਲੇਸ਼ਣ ਕਰ ਸਕੇ।",
+
+    "farm_data_collection": "ਖੇਤ ਦਾ ਡਾਟਾ ਇਕੱਠਾ ਕਰਨਾ",
+    "your_farm_information": "ਤੁਹਾਡੇ ਖੇਤ ਦੀ ਜਾਣਕਾਰੀ",
+    "step": "ਕਦਮ",
+    "farmer_profile": "ਕਿਸਾਨ ਪ੍ਰੋਫਾਈਲ",
+
+    "location_information": "ਆਪਣੇ ਸਥਾਨ ਬਾਰੇ ਦੱਸੋ",
+    "farmer_id_message": "ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਤੋਂ ਬਾਅਦ ਤੁਹਾਡੀ AgroReForm ਕਿਸਾਨ ID ਆਪਣੇ ਆਪ ਬਣ ਜਾਵੇਗੀ।",
+
+    "district": "ਜ਼ਿਲ੍ਹਾ",
+    "district_placeholder": "ਉਦਾਹਰਨ: ਬਠਿੰਡਾ",
+
+    "block_tehsil": "ਬਲਾਕ / ਤਹਿਸੀਲ",
+    "block_placeholder": "ਬਲਾਕ ਜਾਂ ਤਹਿਸੀਲ ਦਰਜ ਕਰੋ",
+
+    "village": "ਪਿੰਡ",
+    "village_placeholder": "ਪਿੰਡ ਦਾ ਨਾਮ ਦਰਜ ਕਰੋ",
+
+    "land_ownership": "ਜ਼ਮੀਨ ਦੀ ਮਲਕੀਅਤ",
+    "select_ownership": "ਮਲਕੀਅਤ ਚੁਣੋ",
+    "own": "ਆਪਣੀ",
+    "leased": "ਠੇਕੇ 'ਤੇ",
+    "partly_own_leased": "ਕੁਝ ਆਪਣੀ + ਕੁਝ ਠੇਕੇ 'ਤੇ",
+
+    "total_farm_area": "ਕੁੱਲ ਖੇਤ ਦਾ ਰਕਬਾ",
+    "farm_area_placeholder": "ਉਦਾਹਰਨ: 5",
+
+    "area_unit": "ਰਕਬੇ ਦੀ ਇਕਾਈ",
+    "acre": "ਏਕੜ",
+    "hectare": "ਹੈਕਟੇਅਰ",
+    "other": "ਹੋਰ",
+
+    "cotton_farm": "ਕਪਾਹ ਦਾ ਖੇਤ",
+    "crop_information": "ਆਪਣੀ ਫਸਲ ਬਾਰੇ ਦੱਸੋ",
+    "primary_research_crop": "ਮੁੱਖ ਖੋਜ ਫਸਲ",
+    "cotton_focus_message": "AgroReForm ਇਸ ਸਮੇਂ ਪੰਜਾਬ ਦੇ ਮਾਲਵਾ ਖੇਤਰ ਵਿੱਚ ਕਪਾਹ ਦੀ ਖੇਤੀ 'ਤੇ ਕੇਂਦ੍ਰਿਤ ਹੈ।",
+
+    "crop": "ਫਸਲ",
+    "cotton_area": "ਕਪਾਹ ਦਾ ਰਕਬਾ",
+    "cotton_area_placeholder": "ਉਦਾਹਰਨ: 5",
+
+    "cotton_variety": "ਕਪਾਹ ਦੀ ਕਿਸਮ",
+    "cotton_variety_placeholder": "ਕਿਸਮ ਦਰਜ ਕਰੋ",
+
+    "farming_year": "ਖੇਤੀ ਸਾਲ",
+    "farming_year_placeholder": "ਉਦਾਹਰਨ: 2026",
+
+    "previous_crop": "ਪਿਛਲੀ ਫਸਲ",
+    "previous_crop_placeholder": "ਉਦਾਹਰਨ: ਕਣਕ",
+
+    "irrigation_type": "ਸਿੰਚਾਈ ਦੀ ਕਿਸਮ",
+    "select_irrigation": "ਸਿੰਚਾਈ ਚੁਣੋ",
+    "canal": "ਨਹਿਰ",
+    "tube_well": "ਟਿਊਬਵੈੱਲ",
+    "both": "ਦੋਵੇਂ",
+    "rain_fed": "ਮੀਂਹ 'ਤੇ ਨਿਰਭਰ",
+
+    "number_of_irrigations": "ਸਿੰਚਾਈਆਂ ਦੀ ਗਿਣਤੀ",
+    "irrigations_placeholder": "ਉਦਾਹਰਨ: 6",
+
+    "cultivation_cost": "ਖੇਤੀਬਾੜੀ ਖਰਚਾ",
+    "farm_expenses": "ਆਪਣੇ ਖੇਤ ਦੇ ਖਰਚਿਆਂ ਨੂੰ ਸਮਝੋ",
+    "cost_description": "ਖੇਤੀਬਾੜੀ ਦੇ ਲਗਭਗ ਖਰਚੇ ਦਰਜ ਕਰੋ। ਇਹ ਜਾਣਕਾਰੀ AgroReForm ਨੂੰ ਤੁਹਾਡੀ ਖੇਤੀ ਦੀ ਆਰਥਿਕ ਸਥਿਤੀ ਸਮਝਣ ਵਿੱਚ ਮਦਦ ਕਰਦੀ ਹੈ।",
+
+    "seed_cost": "ਬੀਜ ਦਾ ਖਰਚਾ",
+    "fertilizer_cost": "ਖਾਦ ਦਾ ਖਰਚਾ",
+    "pesticide_cost": "ਕੀਟਨਾਸ਼ਕ ਦਾ ਖਰਚਾ",
+    "labour_cost": "ਮਜ਼ਦੂਰੀ ਦਾ ਖਰਚਾ",
+    "irrigation_cost": "ਸਿੰਚਾਈ ਦਾ ਖਰਚਾ",
+    "machinery_cost": "ਮਸ਼ੀਨਰੀ ਦਾ ਖਰਚਾ",
+    "other_cost": "ਹੋਰ ਖਰਚਾ",
+
+    "production_return": "ਉਤਪਾਦਨ ਅਤੇ ਆਮਦਨ",
+    "farm_production_question": "ਤੁਹਾਡੇ ਖੇਤ ਵਿੱਚ ਕਿੰਨਾ ਉਤਪਾਦਨ ਹੋਇਆ?",
+
+    "total_cotton_production": "ਕੁੱਲ ਕਪਾਹ ਉਤਪਾਦਨ",
+    "production_placeholder": "ਉਦਾਹਰਨ: 18",
+
+    "production_unit": "ਉਤਪਾਦਨ ਦੀ ਇਕਾਈ",
+    "quintal": "ਕੁਇੰਟਲ",
+    "ton": "ਟਨ",
+
+    "average_selling_price": "ਪ੍ਰਤੀ ਇਕਾਈ ਔਸਤ ਵਿਕਰੀ ਕੀਮਤ",
+    "selling_price_placeholder": "ਉਦਾਹਰਨ: 7000",
+
+    "major_agricultural_problem": "ਮੁੱਖ ਖੇਤੀਬਾੜੀ ਸਮੱਸਿਆ",
+    "major_problem_placeholder": "ਆਪਣੀ ਮੁੱਖ ਸਮੱਸਿਆ ਦੱਸੋ",
+
+    "information_has_purpose": "ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ ਦਾ ਇੱਕ ਉਦੇਸ਼ ਹੈ।",
+    "information_purpose_message": "AgroReForm ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ ਦੀ ਵਰਤੋਂ ਖੇਤ-ਪੱਧਰੀ ਵਿਸ਼ਲੇਸ਼ਣ ਅਤੇ ਫੈਸਲਾ-ਸਹਾਇਤਾ ਜਾਣਕਾਰੀ ਤਿਆਰ ਕਰਨ ਲਈ ਕਰੇਗਾ.",
+
+    "submission_message": "ਜਮ੍ਹਾਂ ਕਰਨ ਤੋਂ ਬਾਅਦ ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ ਖੇਤੀਬਾੜੀ ਵਿਸ਼ਲੇਸ਼ਣ ਲਈ ਪ੍ਰਕਿਰਿਆ ਕੀਤੀ ਜਾਵੇਗੀ।",
+    "analyse_my_farm": "ਮੇਰੇ ਖੇਤ ਦਾ ਵਿਸ਼ਲੇਸ਼ਣ ਕਰੋ",
+
+    "farmer_footer_message": "ਬਿਹਤਰ ਖੇਤੀਬਾੜੀ ਫੈਸਲਿਆਂ ਲਈ ਖੇਤੀਬਾੜੀ ਬੁੱਧੀਮਾਨੀ",
+
+    "hero_subtitle": "ਖੇਤੀਬਾੜੀ ਜੋਖਮ ਦਾ AI ਆਧਾਰਿਤ ਵਿਸ਼ਲੇਸ਼ਣ",
+    "hero_subtitle_line2": "ਅਤੇ ਫੈਸਲਾ-ਸਹਾਇਤਾ",
+    "hero_tagline": "ਬਿਹਤਰ ਡਾਟਾ। ਬਿਹਤਰ ਵਿਸ਼ਲੇਸ਼ਣ। ਬਿਹਤਰ ਫੈਸਲੇ।",
+
+    "new_farmer_title": "ਨਵੇਂ ਕਿਸਾਨ ਦੀ",
+    "registration": "ਰਜਿਸਟ੍ਰੇਸ਼ਨ",
+    "new_farmer_description": "ਉਨ੍ਹਾਂ ਕਿਸਾਨਾਂ ਲਈ ਜੋ ਪਹਿਲੀ ਵਾਰ AgroReForm ਦੀ ਵਰਤੋਂ ਕਰ ਰਹੇ ਹਨ।",
+    "create_farmer_profile": "ਕਿਸਾਨ ਪ੍ਰੋਫਾਈਲ ਬਣਾਓ",
+    "register_farm": "ਖੇਤ ਰਜਿਸਟਰ ਕਰੋ",
+    "enter_agricultural_data": "ਖੇਤੀਬਾੜੀ ਦਾ ਡਾਟਾ ਦਰਜ ਕਰੋ",
+    "generate_farmer_id": "ਵਿਲੱਖਣ ਕਿਸਾਨ ID ਬਣਾਓ",
+    "register_new_farmer": "ਨਵੇਂ ਕਿਸਾਨ ਵਜੋਂ ਰਜਿਸਟਰ ਕਰੋ",
+
+    "portal": "ਪੋਰਟਲ",
+    "existing_farmer_description": "ਉਨ੍ਹਾਂ ਕਿਸਾਨਾਂ ਲਈ ਜਿਨ੍ਹਾਂ ਦੀ AgroReForm ਪ੍ਰੋਫਾਈਲ ਪਹਿਲਾਂ ਤੋਂ ਮੌਜੂਦ ਹੈ।",
+    "access_existing_profile": "ਮੌਜੂਦਾ ਪ੍ਰੋਫਾਈਲ ਖੋਲ੍ਹੋ",
+    "update_farm_information": "ਖੇਤ ਦੀ ਜਾਣਕਾਰੀ ਅਪਡੇਟ ਕਰੋ",
+    "add_new_season_data": "ਨਵੇਂ ਸੀਜ਼ਨ ਦਾ ਡਾਟਾ ਸ਼ਾਮਲ ਕਰੋ",
+    "view_personal_analysis": "ਆਪਣਾ ਵਿਸ਼ਲੇਸ਼ਣ ਵੇਖੋ",
+    "farmer_login": "ਕਿਸਾਨ ਲਾਗਇਨ",
+
+    "agricultural": "ਖੇਤੀਬਾੜੀ",
+    "intelligence_portal": "ਇੰਟੈਲੀਜੈਂਸ ਪੋਰਟਲ",
+    "intelligence_description": "ਅਧਿਕਾਰਤ ਅਧਿਕਾਰੀਆਂ, ਖੋਜਕਰਤਾਵਾਂ ਅਤੇ ਫੈਸਲਾ ਲੈਣ ਵਾਲਿਆਂ ਲਈ।",
+    "area_wise_analysis": "ਖੇਤਰ ਅਨੁਸਾਰ ਵਿਸ਼ਲੇਸ਼ਣ",
+    "district_level_patterns": "ਜ਼ਿਲ੍ਹਾ ਪੱਧਰੀ ਪੈਟਰਨ",
+    "cotton_production_trends": "ਕਪਾਹ ਉਤਪਾਦਨ ਦੇ ਰੁਝਾਨ",
+    "maps_graphs_statistics": "ਨਕਸ਼ੇ, ਗ੍ਰਾਫ ਅਤੇ ਅੰਕੜੇ",
+
+    "footer_message": "ਬਿਹਤਰ ਅਤੇ ਹੋਰ ਮਜ਼ਬੂਤ ਖੇਤੀਬਾੜੀ ਭਵਿੱਖ ਲਈ",
+
+    "analysis_page_title": "ਫਾਰਮ ਵਿਸ਼ਲੇਸ਼ਣ",
+    "analysis_header_subtitle": "ਖੇਤੀਬਾੜੀ ਇੰਟੈਲੀਜੈਂਸ ਅਤੇ ਫੈਸਲਾ ਸਹਾਇਤਾ",
+    "analysis_farmer_portal": "ਕਿਸਾਨ ਪੋਰਟਲ",
+    "analysis_home": "ਮੁੱਖ ਪੰਨਾ",
+
+    "farm_analysis": "ਫਾਰਮ ਵਿਸ਼ਲੇਸ਼ਣ",
+    "understanding_your_farm": "ਆਪਣੇ ਖੇਤ ਨੂੰ ਸਮਝੋ",
+    "analysis_intro": "AgroReForm ਨੇ ਤੁਹਾਡੇ ਵੱਲੋਂ ਦਿੱਤੀ ਖੇਤੀਬਾੜੀ ਜਾਣਕਾਰੀ ਦਾ ਵਿਸ਼ਲੇਸ਼ਣ ਕਰਕੇ ਇਸਨੂੰ ਸਮਝਣ ਯੋਗ ਵਿੱਤੀ ਅਤੇ ਉਤਪਾਦਨ ਸੰਕੇਤਾਂ ਵਿੱਚ ਬਦਲਿਆ ਹੈ।",
+    "farmer_id": "ਕਿਸਾਨ ID",
+
+    "farm_summary": "ਖੇਤ ਦਾ ਸੰਖੇਪ",
+    "farm_summary_description": "ਇਸ ਵਿਸ਼ਲੇਸ਼ਣ ਲਈ ਦਰਜ ਕੀਤੀ ਮੁੱਢਲੀ ਜਾਣਕਾਰੀ।",
+    "not_provided": "ਦਰਜ ਨਹੀਂ ਕੀਤਾ ਗਿਆ",
+
+    "key_financial_indicators": "ਮੁੱਖ ਵਿੱਤੀ ਸੰਕੇਤਕ",
+    "financial_indicators_description": "ਤੁਹਾਡੇ ਦਰਜ ਕੀਤੇ ਖੇਤੀ ਖਰਚਿਆਂ, ਉਤਪਾਦਨ ਅਤੇ ਵਿਕਰੀ ਕੀਮਤ ਤੋਂ ਗਣਨਾ ਕੀਤੀ ਗਈ।",
+    "total_cultivation_cost": "ਕੁੱਲ ਖੇਤੀ ਲਾਗਤ",
+    "total_cultivation_cost_description": "ਖੇਤੀ ਲਾਗਤ ਦੀਆਂ ਵੱਖ-ਵੱਖ ਸ਼੍ਰੇਣੀਆਂ ਵਿੱਚ ਦਰਜ ਕੁੱਲ ਖਰਚਾ।",
+    "estimated_revenue": "ਅਨੁਮਾਨਿਤ ਆਮਦਨ",
+    "estimated_revenue_description": "ਦਰਜ ਕੀਤੇ ਉਤਪਾਦਨ ਅਤੇ ਔਸਤ ਵਿਕਰੀ ਕੀਮਤ ਤੋਂ ਗਣਨਾ ਕੀਤੀ ਗਈ।",
+    "estimated_net_return": "ਅਨੁਮਾਨਿਤ ਸ਼ੁੱਧ ਵਾਪਸੀ",
+    "estimated_net_return_description": "ਅਨੁਮਾਨਿਤ ਆਮਦਨ ਵਿੱਚੋਂ ਦਰਜ ਖੇਤੀ ਲਾਗਤ ਘਟਾਉਣ ਤੋਂ ਬਾਅਦ ਦੀ ਰਕਮ।",
+    "production_description": "ਚੁਣੇ ਗਏ ਖੇਤੀ ਸੀਜ਼ਨ ਲਈ ਦਰਜ ਕੀਤਾ ਉਤਪਾਦਨ।",
+
+    "cultivation_cost_review": "ਖੇਤੀ ਲਾਗਤ ਸਮੀਖਿਆ",
+    "cultivation_cost_review_description": "ਦਰਜ ਕੀਤੇ ਖਰਚੇ ਨੂੰ ਮੁੱਖ ਖੇਤੀ ਗਤੀਵਿਧੀਆਂ ਵਿੱਚ ਕਿਵੇਂ ਵੰਡਿਆ ਗਿਆ ਹੈ, ਇਸਦੀ ਸਮੀਖਿਆ।",
+    "seed": "ਬੀਜ",
+    "fertilizer": "ਖਾਦ",
+    "pesticide": "ਕੀਟਨਾਸ਼ਕ",
+    "labour": "ਮਜ਼ਦੂਰੀ",
+    "irrigation": "ਸਿੰਚਾਈ",
+    "machinery": "ਮਸ਼ੀਨਰੀ",
+
+    "analytical_indicators": "ਵਿਸ਼ਲੇਸ਼ਣਾਤਮਕ ਸੰਕੇਤਕ",
+    "analytical_indicators_description": "ਤੁਹਾਡੇ ਖੇਤ ਲਈ ਦਰਜ ਕੀਤੀ ਜਾਣਕਾਰੀ ਤੋਂ ਤਿਆਰ ਕੀਤੇ ਸੰਕੇਤਕ।",
+    "cost_pressure": "ਲਾਗਤ ਦਬਾਅ",
+    "cost_pressure_description": "ਦਰਜ ਖੇਤੀ ਲਾਗਤ ਦਾ ਅਨੁਮਾਨਿਤ ਦਰਜ ਆਮਦਨ ਨਾਲ ਪ੍ਰਤੀਸ਼ਤ ਅਨੁਪਾਤ।",
+    "pesticide_cost_share": "ਕੀਟਨਾਸ਼ਕ ਲਾਗਤ ਦਾ ਹਿੱਸਾ",
+    "pesticide_cost_share_description": "ਕੁੱਲ ਦਰਜ ਖੇਤੀ ਲਾਗਤ ਵਿੱਚ ਕੀਟਨਾਸ਼ਕ ਖਰਚੇ ਦਾ ਪ੍ਰਤੀਸ਼ਤ।",
+
+    "cotton_farm_information": "ਕਪਾਹ ਫਾਰਮ ਦੀ ਜਾਣਕਾਰੀ",
+    "cotton_farm_information_description": "ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਦੌਰਾਨ ਦਰਜ ਕੀਤੀ ਗਈ ਵਾਧੂ ਖੇਤੀਬਾੜੀ ਜਾਣਕਾਰੀ।",
+
+    "production_review": "ਉਤਪਾਦਨ ਸਮੀਖਿਆ",
+    "production_review_description": "ਦਰਜ ਕੀਤੇ ਕਪਾਹ ਖੇਤਰ ਦੇ ਮੁਕਾਬਲੇ ਉਤਪਾਦਨ ਦੀ ਇੱਕ ਸਧਾਰਨ ਜਾਣਕਾਰੀ।",
+    "production_per_recorded_area": "ਦਰਜ ਖੇਤਰ ਅਨੁਸਾਰ ਉਤਪਾਦਨ",
+    "recorded_production": "ਦਰਜ ਕੀਤਾ ਉਤਪਾਦਨ",
+    "recorded_cotton_area": "ਦਰਜ ਕੀਤਾ ਕਪਾਹ ਖੇਤਰ",
+    "cost_per_production_unit": "ਉਤਪਾਦਨ ਇਕਾਈ ਅਨੁਸਾਰ ਲਾਗਤ",
+
+    "reported_agricultural_problem": "ਦਰਜ ਕੀਤੀ ਖੇਤੀਬਾੜੀ ਸਮੱਸਿਆ",
+    "reported_problem_description": "ਫਾਰਮ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਦੌਰਾਨ ਦਰਜ ਕੀਤੀ ਮੁੱਖ ਸਮੱਸਿਆ।",
+    "your_recorded_problem": "ਤੁਹਾਡੀ ਦਰਜ ਕੀਤੀ ਸਮੱਸਿਆ",
+    "no_major_problem_reported": "ਕੋਈ ਮੁੱਖ ਸਮੱਸਿਆ ਦਰਜ ਨਹੀਂ ਕੀਤੀ ਗਈ",
+
+    "agroreform_label": "AGROREFORM",
+    "from_data_to_awareness": "ਡਾਟਾ ਤੋਂ ਜਾਗਰੂਕਤਾ ਤੱਕ",
+    "awareness_description": "ਇਹ ਸੰਕੇਤਕ ਤੁਹਾਡੀਆਂ ਦਰਜ ਖੇਤੀ ਲਾਗਤਾਂ, ਉਤਪਾਦਨ ਅਤੇ ਵਾਪਸੀ ਵਿਚਕਾਰ ਸੰਬੰਧ ਨੂੰ ਸਮਝਣ ਵਿੱਚ ਮਦਦ ਕਰਦੇ ਹਨ। ਇਹ ਜਾਣਕਾਰੀ ਸੂਝਵਾਨ ਫੈਸਲਿਆਂ ਲਈ ਸਹਾਇਕ ਹੈ ਅਤੇ ਖੇਤੀਬਾੜੀ ਮਾਹਿਰਾਂ ਜਾਂ ਪੇਸ਼ੇਵਰ ਵਿੱਤੀ ਸਲਾਹ ਦੀ ਥਾਂ ਨਹੀਂ ਲੈਂਦੀ।",
+    "analyse_another_farm": "ਹੋਰ ਖੇਤ ਦਾ ਵਿਸ਼ਲੇਸ਼ਣ ਕਰੋ",
+    "agricultural_intelligence": "ਖੇਤੀਬਾੜੀ ਇੰਟੈਲੀਜੈਂਸ",
+
+    "analysis_footer": "AgroReForm — ਬਿਹਤਰ ਖੇਤੀਬਾੜੀ ਫੈਸਲਿਆਂ ਲਈ ਖੇਤੀਬਾੜੀ ਇੰਟੈਲੀਜੈਂਸ",
+    "know_choose_reform": "ਜਾਣੋ। ਚੁਣੋ। ਸੁਧਾਰੋ।",
+
+    "financial_comparison": "ਵਿੱਤੀ ਤੁਲਨਾ",
+    "financial_comparison_description": "ਦਰਜ ਕੀਤੀ ਖੇਤੀ ਲਾਗਤ ਅਤੇ ਅਨੁਮਾਨਿਤ ਆਮਦਨ ਦੀ ਦ੍ਰਿਸ਼ਟੀਗਤ ਤੁਲਨਾ।",
+    "cost_vs_revenue": "ਲਾਗਤ ਬਨਾਮ ਆਮਦਨ",
+    "cost_vs_revenue_description": "ਦੋ ਮੁੱਖ ਵਿੱਤੀ ਮੁੱਲਾਂ ਦੀ ਤੁਲਨਾ।",
+    "input_cost_distribution": "ਇਨਪੁੱਟ ਲਾਗਤ ਵੰਡ",
+    "input_cost_distribution_description": "ਦਰਜ ਕੀਤੀ ਖੇਤੀ ਲਾਗਤ ਵੱਖ-ਵੱਖ ਇਨਪੁੱਟਾਂ ਵਿੱਚ ਕਿਵੇਂ ਵੰਡੀ ਗਈ ਹੈ।",
+
+    "production_trend": "ਉਤਪਾਦਨ ਰੁਝਾਨ",
+    "production_trend_description": "ਜਦੋਂ ਇੱਕ ਤੋਂ ਵੱਧ ਖੇਤੀ ਸਾਲਾਂ ਦਾ ਰਿਕਾਰਡ ਹੋਵੇਗਾ ਤਾਂ ਇਤਿਹਾਸਕ ਰੁਝਾਨ ਉਪਲਬਧ ਹੋਣਗੇ।",
+    "season_wise_farm_history": "ਮੌਸਮ ਅਨੁਸਾਰ ਖੇਤ ਦਾ ਇਤਿਹਾਸ",
+    "season_wise_farm_history_description": "ਅਰਥਪੂਰਨ ਲਾਈਨ ਚਾਰਟ ਲਈ ਇੱਕ ਤੋਂ ਵੱਧ ਖੇਤੀ ਸਾਲਾਂ ਦੇ ਰਿਕਾਰਡ ਲੋੜੀਂਦੇ ਹਨ।",
+    "historical_data_not_available": "ਜਦੋਂ ਇਸ ਖੇਤ ਲਈ ਕਈ ਖੇਤੀ ਸਾਲਾਂ ਦਾ ਡਾਟਾ ਦਰਜ ਹੋਵੇਗਾ ਤਾਂ ਇਤਿਹਾਸਕ ਉਤਪਾਦਨ ਡਾਟਾ ਇੱਥੇ ਦਿਖਾਈ ਦੇਵੇਗਾ।",
+
+    "cotton_area_share": "ਕਪਾਹ ਦੇ ਖੇਤਰ ਦਾ ਹਿੱਸਾ",
+    "cotton_area_share_description": "ਦਰਜ ਕੀਤੇ ਕੁੱਲ ਖੇਤ ਖੇਤਰ ਵਿੱਚ ਕਪਾਹ ਦੇ ਖੇਤਰ ਦਾ ਹਿੱਸਾ।",
+    "cost_per_area": "ਖੇਤਰ ਅਨੁਸਾਰ ਲਾਗਤ",
+    "cost_per_area_description": "ਕਪਾਹ ਦੇ ਖੇਤਰ ਦੇ ਮੁਕਾਬਲੇ ਦਰਜ ਕੀਤੀ ਖੇਤੀ ਲਾਗਤ।",
+
+    "cultivation_cost_breakdown": "ਖੇਤੀ ਲਾਗਤ ਦਾ ਵੇਰਵਾ",
+    "cultivation_cost_breakdown_description": "ਮੁੱਖ ਖੇਤੀ ਇਨਪੁੱਟਾਂ ਦੇ ਦਰਜ ਕੀਤੇ ਖਰਚੇ ਦੀ ਤੁਲਨਾ।",
+
+    "evidence_based_observations": "ਡਾਟਾ-ਅਧਾਰਿਤ ਨਿਰੀਖਣ",
+    "evidence_based_observations_description": "ਇਹ ਨਿਰੀਖਣ ਤੁਹਾਡੇ ਖੇਤ ਲਈ ਦਰਜ ਕੀਤੇ ਮੁੱਲਾਂ ਤੋਂ ਤਿਆਰ ਕੀਤੇ ਗਏ ਹਨ।",
+
+    "ai_ml_insight_layer": "AI / ML ਜਾਣਕਾਰੀ ਪੱਧਰ",
+    "ai_ml_insight_layer_description": "AgroReForm ਮਸ਼ੀਨ ਲਰਨਿੰਗ ਅਧਾਰਿਤ ਪੈਟਰਨ ਪਛਾਣ ਰਾਹੀਂ ਅੰਕੜਾ ਵਿਸ਼ਲੇਸ਼ਣ ਨੂੰ ਹੋਰ ਵਿਕਸਿਤ ਕਰਨ ਲਈ ਤਿਆਰ ਕੀਤਾ ਗਿਆ ਹੈ.",
+    "personalized_farm_intelligence": "ਵਿਅਕਤੀਗਤ ਖੇਤ ਜਾਣਕਾਰੀ",
+    "personalized_farm_intelligence_description": "ਮੌਜੂਦਾ ਪੰਨਾ ਪ੍ਰਮਾਣਿਤ ਖੇਤੀ ਡਾਟਾ ਅਤੇ ਅੰਕੜਾ ਸੂਚਕਾਂ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ। ਮਸ਼ੀਨ ਲਰਨਿੰਗ ਜਾਣਕਾਰੀ ਸਿਰਫ਼ ਕਾਫ਼ੀ ਪ੍ਰਮਾਣਿਤ ਇਤਿਹਾਸਕ ਰਿਕਾਰਡ ਉਪਲਬਧ ਹੋਣ 'ਤੇ ਤਿਆਰ ਕੀਤੀ ਜਾਣੀ ਚਾਹੀਦੀ ਹੈ।",
+
+    "data_analysis": "ਡਾਟਾ ਵਿਸ਼ਲੇਸ਼ਣ",
+    "data_analysis_description": "ਖੇਤ ਪੱਧਰ ਦੇ ਖਰਚ, ਉਤਪਾਦਨ ਅਤੇ ਇਨਪੁੱਟ ਪੈਟਰਨਾਂ ਦਾ ਵਿਸ਼ਲੇਸ਼ਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ।",
+    "pattern_detection": "ਪੈਟਰਨ ਪਛਾਣ",
+    "pattern_detection_description": "ਭਵਿੱਖ ਦੇ ML ਮਾਡਲ ਪ੍ਰਮਾਣਿਤ ਰਿਕਾਰਡਾਂ ਵਿੱਚ ਵਾਰ-ਵਾਰ ਆਉਣ ਵਾਲੇ ਖੇਤੀ ਪੈਟਰਨਾਂ ਦੀ ਪਛਾਣ ਕਰ ਸਕਦੇ ਹਨ।",
+    "farmer_awareness": "ਕਿਸਾਨ ਜਾਗਰੂਕਤਾ",
+    "farmer_awareness_description": "ਵਿਸ਼ਲੇਸ਼ਣ ਦੇ ਨਤੀਜਿਆਂ ਨੂੰ ਸਧਾਰਣ ਕਿਸਾਨ-ਕੇਂਦਰਿਤ ਜਾਗਰੂਕਤਾ ਵਿੱਚ ਬਦਲਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+
+    "amount": "ਰਕਮ"
+    ,
+"crop_health_badge": "AGROREFORM | ਫਸਲ ਦੀ ਸਿਹਤ",
+"report_cotton_problem": "ਕਪਾਹ ਦੀ ਫਸਲ ਦੀ ਸਮੱਸਿਆ ਦਰਜ ਕਰੋ",
+"crop_problem_intro": "ਆਪਣੀ ਕਪਾਹ ਦੀ ਫਸਲ ਵਿੱਚ ਵੇਖੀ ਗਈ ਸਮੱਸਿਆ ਬਾਰੇ ਜਾਣਕਾਰੀ ਦਿਓ ਤਾਂ ਜੋ AgroReForm ਸੰਭਾਵਿਤ ਕਾਰਨਾਂ ਅਤੇ ਸਿਫ਼ਾਰਸ਼ ਕੀਤੀਆਂ ਕਾਰਵਾਈਆਂ ਨੂੰ ਸਮਝਣ ਵਿੱਚ ਤੁਹਾਡੀ ਮਦਦ ਕਰ ਸਕੇ।",
+"problem_identification": "ਸਮੱਸਿਆ ਦੀ ਪਛਾਣ",
+"field_observations": "ਖੇਤ ਵਿੱਚ ਕੀਤੇ ਗਏ ਨਿਰੀਖਣ",
+"previous_management": "ਪਹਿਲਾਂ ਕੀਤੇ ਗਏ ਉਪਾਅ",
+"problem_category": "ਸਮੱਸਿਆ ਦੀ ਸ਼੍ਰੇਣੀ",
+"specific_problem": "ਖਾਸ ਸਮੱਸਿਆ",
+"crop_stage": "ਫਸਲ ਦੀ ਅਵਸਥਾ",
+"symptoms_observed": "ਵੇਖੇ ਗਏ ਲੱਛਣ",
+"affected_area": "ਪ੍ਰਭਾਵਿਤ ਰਕਬਾ",
+"problem_severity": "ਸਮੱਸਿਆ ਦੀ ਗੰਭੀਰਤਾ",
+"previous_action_taken": "ਪਹਿਲਾਂ ਕੀਤੀ ਗਈ ਕਾਰਵਾਈ",
+"additional_notes": "ਵਾਧੂ ਜਾਣਕਾਰੀ",
+"select_category": "ਸਮੱਸਿਆ ਦੀ ਸ਼੍ਰੇਣੀ ਚੁਣੋ",
+"select_problem": "ਖਾਸ ਸਮੱਸਿਆ ਚੁਣੋ",
+"select_crop_stage": "ਫਸਲ ਦੀ ਅਵਸਥਾ ਚੁਣੋ",
+"select_severity": "ਗੰਭੀਰਤਾ ਚੁਣੋ",
+"enter_symptoms": "ਵੇਖੇ ਗਏ ਲੱਛਣਾਂ ਬਾਰੇ ਦੱਸੋ",
+"enter_affected_area": "ਪ੍ਰਭਾਵਿਤ ਰਕਬਾ ਦਰਜ ਕਰੋ",
+"enter_previous_action": "ਪਹਿਲਾਂ ਕੀਤੇ ਗਏ ਉਪਾਅ ਬਾਰੇ ਦੱਸੋ",
+"enter_additional_notes": "ਹੋਰ ਨਿਰੀਖਣ ਦਰਜ ਕਰੋ",
+"crop_problem_disclaimer": "ਇਹ ਰਿਪੋਰਟ ਕਿਸਾਨ ਵੱਲੋਂ ਦਿੱਤੇ ਗਏ ਨਿਰੀਖਣਾਂ ਨੂੰ ਦਰਜ ਕਰਦੀ ਹੈ। ਇਹ ਕਿਸੇ ਖੇਤੀ ਮਾਹਿਰ ਵੱਲੋਂ ਪੁਸ਼ਟੀ ਕੀਤੀ ਜਾਂਚ ਨਹੀਂ ਹੈ।",
+"submit_crop_problem_report": "ਫਸਲ ਦੀ ਸਮੱਸਿਆ ਦੀ ਰਿਪੋਰਟ ਜਮ੍ਹਾਂ ਕਰੋ"
+}

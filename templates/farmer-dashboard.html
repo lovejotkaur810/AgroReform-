@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<html lang="{{ current_language }}"></html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Farmer Dashboard | AgroReForm</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7f2;
+            color: #263528;
+        }
+
+        header {
+            background: #245c35;
+            color: white;
+            padding: 22px 7%;
+        }
+
+        header h1 {
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            margin-top: 7px;
+            color: #e0eee2;
+            font-size: 14px;
+        }
+
+        .container {
+            width: 86%;
+            max-width: 1150px;
+            margin: 35px auto;
+        }
+
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            font-size: 26px;
+            margin-bottom: 9px;
+            color: #245c35;
+        }
+
+        .welcome p {
+            color: #657267;
+            line-height: 1.6;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 18px;
+            margin: 25px 0 35px;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 12px;
+            padding: 23px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid #39834e;
+        }
+
+        .summary-card h3 {
+            color: #667568;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .summary-card strong {
+            font-size: 29px;
+            color: #245c35;
+        }
+
+        .section-title {
+            margin: 35px 0 17px;
+            font-size: 21px;
+            color: #294b32;
+        }
+
+        .record-card,
+        .report-card {
+            background: white;
+            border-radius: 12px;
+            padding: 23px;
+            margin-bottom: 17px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e6ece5;
+        }
+
+        .record-card h3,
+        .report-card h3 {
+            color: #245c35;
+            font-size: 19px;
+            margin-bottom: 15px;
+        }
+
+        .details {
+            line-height: 2;
+            color: #526052;
+            font-size: 14px;
+        }
+
+        .details strong {
+            color: #354b39;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 11px;
+            background: #e8f3e9;
+            color: #245c35;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 17px;
+            padding: 11px 19px;
+            background: #2e7042;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #1f512f;
+        }
+
+        .empty {
+            background: white;
+            padding: 24px;
+            border-radius: 10px;
+            color: #687568;
+            border: 1px solid #e6ece5;
+            line-height: 1.6;
+        }
+
+        .footer-actions {
+            margin-top: 35px;
+            padding: 22px;
+            background: #e8f1e8;
+            border-radius: 12px;
+        }
+
+        .footer-actions h3 {
+            color: #245c35;
+            margin-bottom: 8px;
+        }
+
+        .footer-actions p {
+            color: #647267;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #718071;
+            margin-top: 40px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 92%;
+            }
+
+            header {
+                padding: 20px 4%;
+            }
+
+            .record-card,
+            .report-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>AgroReForm</h1>
+        <p>Farmer Dashboard | Your Agricultural Records</p>
+    </header>
+
+
+    <main class="container">
+
+        <!-- WELCOME SECTION -->
+        <section class="welcome">
+
+            <h2>
+                Welcome, {{ farmer.get('name', 'Farmer') }}!
+            </h2>
+
+            <p>
+                View your saved farm records, crop information
+                and submitted crop problem reports in one place.
+            </p>
+
+        </section>
+
+
+        <!-- SUMMARY CARDS -->
+        <section class="summary">
+
+            <div class="summary-card">
+                <h3>Total Farms</h3>
+                <strong>{{ farms|length }}</strong>
+            </div>
+
+            <div class="summary-card">
+                <h3>Crop Records</h3>
+                <strong>{{ crop_records|length }}</strong>
+            </div>
+
+            <div class="summary-card">
+                <h3>Problem Reports</h3>
+                <strong>{{ reports|length }}</strong>
+            </div>
+
+        </section>
+
+
+        <!-- SAVED FARM AND CROP RECORDS -->
+        <h2 class="section-title">
+            My Saved Farm & Crop Records
+        </h2>
+
+        {% if crop_records %}
+
+            {% for crop in crop_records %}
+
+                <div class="record-card">
+
+                    <h3>
+                        {{ crop.get('crop', 'Crop Record') }}
+                    </h3>
+
+                    <div class="details">
+
+                        <p>
+                            <strong>Farm ID:</strong>
+                            {{ crop.get('farm_id', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Record ID:</strong>
+                            {{ crop.get('record_id', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Crop:</strong>
+                            {{ crop.get('crop', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Cotton Variety:</strong>
+                            {{ crop.get('cotton_variety', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Farming Year:</strong>
+                            {{ crop.get('farming_year', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Previous Crop:</strong>
+                            {{ crop.get('previous_crop', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Total Farm Area:</strong>
+                            {{ crop.get('farm_area', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Cotton Area:</strong>
+                            {{ crop.get('cotton_area', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Production:</strong>
+                            {{ crop.get('production', 'N/A') }}
+                            {{ crop.get('production_unit', '') }}
+                        </p>
+
+                        <p>
+                            <strong>Selling Price:</strong>
+                            {{ crop.get('selling_price', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Major Problem:</strong>
+                            {{ crop.get('major_problem', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Irrigation Type:</strong>
+                            {{ crop.get('irrigation_type', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Number of Irrigations:</strong>
+                            {{ crop.get('number_of_irrigations', 'N/A') }}
+                        </p>
+
+                    </div>
+
+
+                    <!-- OPEN SELECTED CROP ANALYSIS -->
+                    <form
+                        action="{{ url_for('select_crop_record') }}"
+                        method="POST"
+                    >
+
+                        <input
+                            type="hidden"
+                            name="farm_id"
+                            value="{{ crop.get('farm_id', '') }}"
+                        >
+
+                        <input
+                            type="hidden"
+                            name="record_id"
+                            value="{{ crop.get('record_id', '') }}"
+                        >
+
+                        <button type="submit" class="btn">
+                            Open Farm Analysis
+                        </button>
+
+                    </form>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty">
+                No saved crop records were found in your account.
+            </div>
+
+        {% endif %}
+
+
+
+        <!-- CROP PROBLEM REPORTS -->
+        <h2 class="section-title">
+            My Crop Problem Reports
+        </h2>
+
+        {% if reports %}
+
+            {% for report in reports %}
+
+                <div class="report-card">
+
+                    <h3>
+                        {{ report.get('specific_problem', 'Crop Problem Report') }}
+                    </h3>
+
+                    <div class="details">
+
+                        <p>
+                            <strong>Category:</strong>
+                            {{ report.get('category', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Crop:</strong>
+                            {{ report.get('crop', report.get('crop_name', 'N/A')) }}
+                        </p>
+
+                        <p>
+                            <strong>Crop Stage:</strong>
+                            {{ report.get('crop_stage', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Severity:</strong>
+                            {{ report.get('severity', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Reported:</strong>
+                            {{ report.get('reported_at', 'N/A') }}
+                        </p>
+
+                        <p>
+                            <strong>Status:</strong>
+                            <span class="status">
+                                {{ report.get('report_status', 'Submitted') }}
+                            </span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty">
+                You have not submitted any crop problem reports yet.
+            </div>
+
+        {% endif %}
+
+
+
+        <!-- FOOTER ACTIONS -->
+        <section class="footer-actions">
+
+            <h3>Your Agricultural Records</h3>
+
+            <p>
+                Select a saved crop record above to open its
+                individual farm analysis.
+            </p>
+
+            <a
+                href="{{ url_for('analyze') }}"
+                class="btn"
+            >
+                Open Current Farm Analysis
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        AgroReForm — Know. Choose. Reform.
+    </footer>
+
+</body>
+
+</html>

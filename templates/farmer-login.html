@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="{{ current_language }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Login | AgroReForm</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .login-wrapper {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 15px;
+            background: #f3f7f1;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 430px;
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+        }
+
+        .login-card h2 {
+            text-align: center;
+            color: #245b35;
+            margin-bottom: 10px;
+        }
+
+        .login-description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .login-card label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: 600;
+        }
+
+        .login-card input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 22px;
+            background: #287a43;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background: #1d6033;
+        }
+
+        .error-message {
+            background: #ffe8e8;
+            color: #a00000;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #287a43;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-wrapper">
+    <div class="login-card">
+
+        <h2>🌾 Farmer Login</h2>
+
+        <p class="login-description">
+            Access your personal AgroReForm agricultural analysis.
+        </p>
+
+        {% if error %}
+            <div class="error-message">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('farmer_login') }}">
+
+            <label for="farmer_id">Farmer ID</label>
+            <input
+                type="text"
+                id="farmer_id"
+                name="farmer_id"
+                placeholder="Enter your Farmer ID"
+                required
+                autocomplete="username"
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+                autocomplete="current-password"
+            >
+
+            <button type="submit" class="login-button">
+                Login to Farmer Portal
+            </button>
+
+        </form>
+
+        <a href="{{ url_for('home') }}" class="back-link">
+            ← Back to Home
+        </a>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+
+Flask
+pymongo
+joblib
+scikit-learn
+gunicorn
+python-dotenv

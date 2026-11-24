@@ -1,0 +1,2835 @@
+<!DOCTYPE html>
+<html lang="{{ current_language }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        AgroReForm | {{ translations.get("analysis_page_title", "Farm Analysis") }}
+    </title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7f2;
+            color: #243026;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #dfe5dc;
+            padding: 16px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #315b3b;
+        }
+
+        .brand-subtitle {
+            font-size: 12px;
+            color: #68756a;
+            margin-top: 2px;
+        }
+
+        .nav-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-area a {
+            color: #3d4b40;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .nav-area a:hover {
+            color: #315b3b;
+        }
+
+        .language-select {
+            border: 1px solid #cbd6ca;
+            border-radius: 8px;
+            padding: 8px 10px;
+            background: #ffffff;
+            color: #344238;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            width: 88%;
+            max-width: 1200px;
+            margin: 45px auto 70px;
+        }
+
+        .page-heading {
+            margin-bottom: 35px;
+        }
+
+        .page-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #5d795f;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .page-heading h1 {
+            font-size: 40px;
+            line-height: 1.2;
+            color: #243b29;
+            margin-bottom: 12px;
+        }
+
+        .page-heading p {
+            max-width: 850px;
+            color: #657166;
+            font-size: 16px;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        .section {
+            background: #ffffff;
+            border: 1px solid #e0e7dd;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 3px 12px rgba(43, 62, 45, 0.04);
+        }
+
+        .section-number {
+            color: #668066;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .section h2 {
+            font-size: 25px;
+            color: #29452f;
+            margin-bottom: 8px;
+        }
+
+        .section-description {
+            color: #707a71;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        /* =========================
+           FARM SUMMARY
+        ========================= */
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .summary-item {
+            background: #f7f9f5;
+            border: 1px solid #e1e8df;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .summary-label {
+            color: #718074;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .summary-value {
+            color: #28382c;
+            font-size: 16px;
+            font-weight: 700;
+            word-break: break-word;
+        }
+
+        /* =========================
+           FINANCIAL CARDS
+        ========================= */
+
+        .financial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .financial-card {
+            border: 1px solid #e0e7dd;
+            border-radius: 12px;
+            padding: 20px;
+            background: #fbfcfa;
+        }
+
+        .financial-card h3 {
+            font-size: 15px;
+            color: #526156;
+            margin-bottom: 8px;
+        }
+
+        .financial-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #294d32;
+            margin-bottom: 7px;
+        }
+
+        .financial-card p {
+            font-size: 13px;
+            color: #758077;
+        }
+
+        /* =========================
+           CHARTS
+        ========================= */
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .chart-card {
+            border: 1px solid #e0e7dd;
+            border-radius: 12px;
+            padding: 20px;
+            background: #ffffff;
+        }
+
+        .chart-card h3 {
+            color: #304834;
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .chart-card p {
+            color: #788178;
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+        }
+
+        .empty-chart {
+            height: 300px;
+            border: 1px dashed #cbd5c9;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+            color: #7a837b;
+            background: #fafcf9;
+            font-size: 14px;
+        }
+
+        /* =========================
+           PRODUCTION
+        ========================= */
+
+        .production-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .production-card {
+            border: 1px solid #e0e7dd;
+            background: #fafcf9;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .production-card h3 {
+            font-size: 13px;
+            color: #6d786f;
+            margin-bottom: 6px;
+        }
+
+        .production-number {
+            font-size: 25px;
+            font-weight: 700;
+            color: #2e5035;
+        }
+
+        .production-unit {
+            color: #7c857d;
+            font-size: 12px;
+        }
+
+        /* =========================
+           INDICATORS
+        ========================= */
+
+        .indicator-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .indicator-card {
+            border: 1px solid #e0e7dd;
+            border-radius: 12px;
+            padding: 18px;
+            background: #ffffff;
+        }
+
+        .indicator-card h3 {
+            font-size: 14px;
+            color: #536158;
+            margin-bottom: 5px;
+        }
+
+        .indicator-value {
+            font-size: 25px;
+            font-weight: 700;
+            color: #31553a;
+            margin-bottom: 5px;
+        }
+
+        .indicator-card p {
+            color: #788178;
+            font-size: 12px;
+        }
+
+        /* =========================
+           OBSERVATIONS
+        ========================= */
+
+        .observation-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .observation {
+            padding: 15px 17px;
+            border-left: 4px solid #759274;
+            background: #f7faf5;
+            border-radius: 7px;
+            color: #48534b;
+            font-size: 14px;
+        }
+
+        /* =========================
+           AI / ML
+        ========================= */
+
+        .ai-intro {
+            background: #f5f8f3;
+            border: 1px solid #dfe8dc;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 20px;
+            color: #566159;
+            font-size: 14px;
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .ai-card {
+            border: 1px solid #dfe6dd;
+            border-radius: 12px;
+            padding: 18px;
+            background: #ffffff;
+        }
+
+        .ai-card h3 {
+            color: #31513a;
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+
+        .ai-card p {
+            color: #737d75;
+            font-size: 13px;
+        }
+
+        /* =========================
+           AWARENESS
+        ========================= */
+
+        .awareness-box {
+            background: #eef5eb;
+            border: 1px solid #d4e2d1;
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .awareness-box h3 {
+            color: #2f5135;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .awareness-box p {
+            color: #566258;
+            font-size: 14px;
+        }
+
+        /* =========================
+           REPORTED PROBLEM
+        ========================= */
+
+        .problem-box {
+            background: #fafbf9;
+            border: 1px solid #e1e6df;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .problem-label {
+            font-size: 12px;
+            color: #747e76;
+            margin-bottom: 6px;
+        }
+
+        .problem-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #344238;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .bottom-actions {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin: 35px 0 30px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .primary-btn {
+            background: #3e6545;
+            color: #ffffff;
+        }
+
+        .primary-btn:hover {
+            background: #31543a;
+        }
+
+        .secondary-btn {
+            background: #ffffff;
+            color: #3e5d43;
+            border: 1px solid #cbd7c9;
+        }
+
+        .secondary-btn:hover {
+            background: #f3f7f1;
+        }
+
+        /* =========================
+           SIMPLE FOOTER
+        ========================= */
+
+        .simple-footer {
+            border-top: 1px solid #dce3da;
+            padding-top: 22px;
+            text-align: center;
+            color: #788178;
+            font-size: 13px;
+        }
+
+        .simple-footer strong {
+            color: #3d5d42;
+            margin-right: 6px;
+        }
+        /* =========================
+   AGRICULTURAL RISK ANALYSIS
+========================= */
+
+.risk-analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.risk-card {
+    border: 1px solid #dfe7dc;
+    border-radius: 14px;
+    padding: 20px;
+    background: #ffffff;
+}
+
+.risk-card h3 {
+    color: #29452f;
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+.risk-card-description {
+    color: #737d75;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.risk-status {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #eef5eb;
+    color: #315b3b;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.risk-gauge {
+    width: 150px;
+    height: 150px;
+    margin: 5px auto 18px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #5f8064 0deg,
+        #5f8064 var(--gauge-angle),
+        #e7ece5 var(--gauge-angle),
+        #e7ece5 360deg
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.risk-gauge-inner {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.risk-gauge-value {
+    font-size: 25px;
+    font-weight: 700;
+    color: #29452f;
+}
+
+.risk-gauge-label {
+    font-size: 11px;
+    color: #788178;
+}
+
+.risk-dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin: 12px 0 18px;
+}
+
+.risk-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #dce4da;
+}
+
+.risk-dot.active {
+    background: #5f8064;
+}
+
+.risk-supporting {
+    border-top: 1px solid #edf0eb;
+    padding-top: 14px;
+}
+
+.risk-supporting div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 7px;
+    font-size: 12px;
+}
+
+.risk-supporting span:first-child {
+    color: #788178;
+}
+
+.risk-supporting span:last-child {
+    color: #344238;
+    font-weight: 700;
+}
+
+.risk-interpretation {
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f6f9f4;
+    color: #59645b;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.risk-note {
+    margin-top: 20px;
+    padding: 15px 17px;
+    border-left: 4px solid #759274;
+    background: #f7faf5;
+    color: #59645b;
+    font-size: 13px;
+}
+
+@media (max-width: 1000px) {
+    .risk-analysis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1000px) {
+            .summary-grid,
+            .production-grid,
+            .indicator-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .financial-grid,
+            .ai-grid,
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 14px 5%;
+                align-items: flex-start;
+            }
+
+            .nav-area {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            .brand-subtitle {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+                margin-top: 30px;
+            }
+
+            .page-heading h1 {
+                font-size: 31px;
+            }
+
+            .summary-grid,
+            .production-grid,
+            .indicator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+
+/* =========================================
+   SECTION 12 — CROP PROBLEM REPORTING
+========================================= */
+
+.crop-report-section {
+    padding: 32px;
+    border: 1px solid #dfe8dc;
+    border-radius: 18px;
+    background: #ffffff;
+}
+
+/* HEADER */
+
+.crop-report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 25px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid #e8eee5;
+}
+
+.crop-report-eyebrow {
+    display: inline-block;
+    color: #638267;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 9px;
+}
+
+.crop-report-header h2 {
+    color: #29452f;
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.crop-report-header p {
+    color: #68756a;
+    font-size: 14px;
+    max-width: 700px;
+}
+
+.crop-report-icon {
+    width: 62px;
+    height: 62px;
+    min-width: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: #eef5eb;
+    font-size: 29px;
+}
+
+/* FORM PARTS */
+
+.crop-report-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.report-form-part {
+    padding: 23px;
+    border: 1px solid #e3eae0;
+    border-radius: 13px;
+    background: #fbfcfa;
+}
+
+.report-part-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 22px;
+}
+
+.report-part-heading > span {
+    width: 39px;
+    height: 39px;
+    min-width: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #eaf2e7;
+    color: #315b3b;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.report-part-heading h3 {
+    color: #304834;
+    font-size: 17px;
+    margin-bottom: 2px;
+}
+
+.report-part-heading p {
+    color: #7a857b;
+    font-size: 12px;
+}
+
+/* INPUT GRID */
+
+.report-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.report-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.report-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.report-field label {
+    color: #435247;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.report-field input,
+.report-field select,
+.report-field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d8e1d6;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #344238;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.report-field input,
+.report-field select {
+    min-height: 45px;
+}
+
+.report-field textarea {
+    min-height: 105px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.report-field input:focus,
+.report-field select:focus,
+.report-field textarea:focus {
+    border-color: #719474;
+    box-shadow: 0 0 0 3px rgba(95, 128, 100, 0.12);
+}
+
+.report-field input::placeholder,
+.report-field textarea::placeholder {
+    color: #a0aaa0;
+}
+
+/* SUBMISSION AREA */
+
+.report-submit-area {
+    padding-top: 5px;
+}
+
+.report-disclaimer {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border-left: 4px solid #759274;
+    border-radius: 7px;
+    background: #f3f7f1;
+}
+
+.report-disclaimer > span {
+    color: #557b59;
+    font-size: 18px;
+}
+
+.report-disclaimer p {
+    color: #657166;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.report-submit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 13px 23px;
+    border: none;
+    border-radius: 8px;
+    background: #3e6545;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+.report-submit-button:hover {
+    background: #294d32;
+    transform: translateY(-1px);
+}
+
+.report-submit-button span {
+    font-size: 19px;
+}
+
+/* SUCCESS MESSAGE */
+
+.alert-success {
+    padding: 13px 18px;
+    margin-bottom: 18px;
+    border: 1px solid #cfe2ce;
+    border-radius: 9px;
+    background: #edf7ed;
+    color: #315b3b;
+    font-size: 14px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 700px) {
+
+    .crop-report-section {
+        padding: 20px;
+    }
+
+    .crop-report-header {
+        align-items: flex-start;
+    }
+
+    .crop-report-header h2 {
+        font-size: 22px;
+    }
+
+    .crop-report-icon {
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+        font-size: 22px;
+    }
+
+    .report-form-part {
+        padding: 17px;
+    }
+
+    .report-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .report-field.full-width {
+        grid-column: auto;
+    }
+
+    .report-submit-button {
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        <div class="brand-name">AgroReForm</div>
+        <div class="brand-subtitle">
+            {{ translations.get(
+                "analysis_header_subtitle",
+                "Agricultural Intelligence & Decision Support"
+            ) }}
+        </div>
+    </div>
+
+    <div class="nav-area">
+        <a href="{{ url_for('home') }}">
+            {{ translations.get("analysis_home", "Home") }}
+        </a>
+
+        <a href="{{ url_for('farmer') }}">
+            {{ translations.get("analysis_farmer_portal", "Farmer Portal") }}
+        </a>
+
+        <select
+            class="language-select"
+            onchange="changeLanguage(this.value)"
+        >
+            {% for code, language_name in supported_languages.items() %}
+                <option
+                    value="{{ code }}"
+                    {% if current_language == code %}selected{% endif %}
+                >
+                    {{ language_name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+</header>
+
+
+<main class="container">
+
+    <!-- =========================
+         PAGE HEADING
+    ========================= -->
+
+    <div class="page-heading">
+        <div class="page-label">
+            {{ translations.get("analysis_page_title", "FARM ANALYSIS") }}
+        </div>
+
+        <h1>
+            {{ translations.get(
+                "understanding_your_farm",
+                "Understanding Your Farm"
+            ) }}
+        </h1>
+
+        <p>
+            {{ translations.get(
+                "analysis_intro",
+                "AgroReForm has analysed the agricultural information you provided and converted it into understandable financial and production indicators."
+            ) }}
+        </p>
+    </div>
+
+
+    <!-- =========================
+         01 FARM SUMMARY
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-number">01</div>
+
+        <h2>
+            {{ translations.get("farm_summary", "Farm Summary") }}
+        </h2>
+
+        <p class="section-description">
+            {{ translations.get(
+                "farm_summary_description",
+                "Basic information recorded for this analysis."
+            ) }}
+        </p>
+
+        <div class="summary-grid">
+
+            <div class="summary-item">
+                <div class="summary-label">
+                    {{ translations.get("farmer_id", "Farmer ID") }}
+                </div>
+                <div class="summary-value">
+                    {{ farmer_data.get("Farmer_ID", translations.get("not_provided", "Not provided")) }}
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div class="summary-label">
+                    {{ translations.get("district", "District") }}
+                </div>
+                <div class="summary-value">
+                    {{ farmer_data.get("District", translations.get("not_provided", "Not provided")) }}
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div class="summary-label">
+                    {{ translations.get("block_tehsil", "Block / Tehsil") }}
+                </div>
+                <div class="summary-value">
+                    {{ farmer_data.get("Block_Tehsil", farmer_data.get("Block", translations.get("not_provided", "Not provided"))) }}
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div class="summary-label">
+                    {{ translations.get("village", "Village") }}
+                </div>
+                <div class="summary-value">
+                    {{ farmer_data.get("Village", translations.get("not_provided", "Not provided")) }}
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div class="summary-label">
+                    {{ translations.get("land_ownership", "Land Ownership") }}
+                </div>
+                <div class="summary-value">
+                    {{ farmer_data.get("Land_Ownership", translations.get("not_provided", "Not provided")) }}
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div class="summary-label">
+                    {{ translations.get("farm_area", "Farm Area") }}
+                </div>
+                <div class="summary-value">
+                    {{ farmer_data.get("Farm_Area", 0) }}
+                    {{ farmer_data.get("Area_Unit", "") }}
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div class="summary-label">
+                    {{ translations.get("cotton_area", "Cotton Area") }}
+                </div>
+                <div class="summary-value">
+                    {{ farmer_data.get("Cotton_Area", 0) }}
+                    {{ farmer_data.get("Area_Unit", "") }}
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div class="summary-label">
+                    {{ translations.get("farming_year", "Farming Year") }}
+                </div>
+                <div class="summary-value">
+                    {{ farmer_data.get("Farming_Year", translations.get("not_provided", "Not provided")) }}
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         02 FINANCIAL INDICATORS
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-number">02</div>
+
+        <h2>
+            {{ translations.get(
+                "key_financial_indicators",
+                "Key Financial Indicators"
+            ) }}
+        </h2>
+
+        <p class="section-description">
+            {{ translations.get(
+                "key_financial_indicators_description",
+                "Important financial indicators calculated from your recorded farm data."
+            ) }}
+        </p>
+
+        <div class="financial-grid">
+
+            <div class="financial-card">
+                <h3>
+                    {{ translations.get(
+                        "total_cultivation_cost",
+                        "Total Cultivation Cost"
+                    ) }}
+                </h3>
+
+                <div class="financial-value">
+                    ₹{{ "%.2f"|format(analysis.get("Total_Cost", 0)) }}
+                </div>
+
+                <p>
+                    {{ translations.get(
+                        "total_cultivation_cost_description",
+                        "Combined recorded expenditure across cultivation cost categories."
+                    ) }}
+                </p>
+            </div>
+
+
+            <div class="financial-card">
+                <h3>
+                    {{ translations.get(
+                        "estimated_revenue",
+                        "Estimated Revenue"
+                    ) }}
+                </h3>
+
+                <div class="financial-value">
+                    ₹{{ "%.2f"|format(analysis.get("Total_Revenue", 0)) }}
+                </div>
+
+                <p>
+                    {{ translations.get(
+                        "estimated_revenue_description",
+                        "Calculated from recorded production and average selling price."
+                    ) }}
+                </p>
+            </div>
+
+
+            <div class="financial-card">
+                <h3>
+                    {{ translations.get(
+                        "estimated_net_return",
+                        "Estimated Net Return"
+                    ) }}
+                </h3>
+
+                <div class="financial-value">
+                    ₹{{ "%.2f"|format(analysis.get("Estimated_Net_Return", 0)) }}
+                </div>
+
+                <p>
+                    {{ translations.get(
+                        "estimated_net_return_description",
+                        "Estimated revenue minus recorded cultivation cost."
+                    ) }}
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         03 FINANCIAL COMPARISON
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-number">03</div>
+
+        <h2>
+            {{ translations.get(
+                "financial_comparison",
+                "Financial Comparison"
+            ) }}
+        </h2>
+
+        <p class="section-description">
+            {{ translations.get(
+                "financial_comparison_description",
+                "Visual comparison of recorded cultivation cost and estimated revenue."
+            ) }}
+        </p>
+
+        <div class="chart-grid">
+
+            <div class="chart-card">
+                <h3>
+                    {{ translations.get(
+                        "cost_vs_revenue",
+                        "Cost vs Revenue"
+                    ) }}
+                </h3>
+
+                <p>
+                    {{ translations.get(
+                        "cost_vs_revenue_description",
+                        "Comparison of the two main financial values."
+                    ) }}
+                </p>
+
+                <div class="chart-wrapper">
+                    <canvas id="financialChart"></canvas>
+                </div>
+            </div>
+
+
+            <div class="chart-card">
+                <h3>
+                    {{ translations.get(
+                        "input_cost_distribution",
+                        "Input Cost Distribution"
+                    ) }}
+                </h3>
+
+                <p>
+                    {{ translations.get(
+                        "input_cost_distribution_description",
+                        "How recorded cultivation expenditure is distributed across inputs."
+                    ) }}
+                </p>
+
+                <div class="chart-wrapper">
+                    <canvas id="inputChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         04 PRODUCTION REVIEW
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-number">04</div>
+
+        <h2>
+            {{ translations.get(
+                "production_review",
+                "Production Review"
+            ) }}
+        </h2>
+
+        <p class="section-description">
+            {{ translations.get(
+                "production_review_description",
+                "A simple view of production relative to the recorded cotton area."
+            ) }}
+        </p>
+
+        <div class="production-grid">
+
+            <div class="production-card">
+                <h3>
+                    {{ translations.get(
+                        "recorded_production",
+                        "Recorded Production"
+                    ) }}
+                </h3>
+
+                <div class="production-number">
+                    {{ farmer_data.get("Production", 0) }}
+                </div>
+
+                <div class="production-unit">
+                    {{ farmer_data.get("Production_Unit", "") }}
+                </div>
+            </div>
+
+
+            <div class="production-card">
+                <h3>
+                    {{ translations.get(
+                        "recorded_cotton_area",
+                        "Recorded Cotton Area"
+                    ) }}
+                </h3>
+
+                <div class="production-number">
+                    {{ farmer_data.get("Cotton_Area", 0) }}
+                </div>
+
+                <div class="production-unit">
+                    {{ farmer_data.get("Area_Unit", "") }}
+                </div>
+            </div>
+
+
+            <div class="production-card">
+                <h3>
+                    {{ translations.get(
+                        "production_per_recorded_area",
+                        "Production per recorded area"
+                    ) }}
+                </h3>
+
+                <div class="production-number">
+                    {{ "%.2f"|format(analysis.get("Production_Per_Area", 0)) }}
+                </div>
+
+                <div class="production-unit">
+                    {{ farmer_data.get("Production_Unit", "") }}
+                    /
+                    {{ farmer_data.get("Area_Unit", "") }}
+                </div>
+            </div>
+
+
+            <div class="production-card">
+                <h3>
+                    {{ translations.get(
+                        "cost_per_production_unit",
+                        "Cost per Production Unit"
+                    ) }}
+                </h3>
+
+                <div class="production-number">
+                    ₹{{ "%.2f"|format(analysis.get("Cost_Per_Production_Unit", 0)) }}
+                </div>
+
+                <div class="production-unit">
+                    {{ farmer_data.get("Production_Unit", "") }}
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         05 PRODUCTION TREND
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-number">05</div>
+
+        <h2>
+            {{ translations.get(
+                "production_trend",
+                "Production Trend"
+            ) }}
+        </h2>
+
+        <p class="section-description">
+            {{ translations.get(
+                "production_trend_description",
+                "Historical trends become available when multiple seasons are recorded for the farm."
+            ) }}
+        </p>
+
+        <div class="chart-card">
+
+            <h3>
+                {{ translations.get(
+                    "season_wise_farm_history",
+                    "Season-wise Farm History"
+                ) }}
+            </h3>
+
+            <p>
+                {{ translations.get(
+                    "season_wise_farm_history_description",
+                    "A meaningful line chart requires records from more than one farming season."
+                ) }}
+            </p>
+
+            <div class="empty-chart">
+                {{ translations.get(
+                    "historical_data_not_available",
+                    "Historical production data will appear here when multiple farming seasons are recorded for this farm."
+                ) }}
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         06 ANALYTICAL INDICATORS
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-number">06</div>
+
+        <h2>
+            {{ translations.get(
+                "analytical_indicators",
+                "Analytical Indicators"
+            ) }}
+        </h2>
+
+        <p class="section-description">
+            {{ translations.get(
+                "analytical_indicators_description",
+                "Indicators generated from the information recorded for your farm."
+            ) }}
+        </p>
+
+        <div class="indicator-grid">
+
+            <div class="indicator-card">
+                <h3>
+                    {{ translations.get(
+                        "cost_pressure",
+                        "Cost Pressure"
+                    ) }}
+                </h3>
+
+                <div class="indicator-value">
+                    {{ "%.2f"|format(analysis.get("Cost_Pressure", 0)) }}%
+                </div>
+
+                <p>
+                    {{ translations.get(
+                        "cost_pressure_description",
+                        "Recorded cultivation cost as a percentage of estimated recorded revenue."
+                    ) }}
+                </p>
+            </div>
+
+
+            <div class="indicator-card">
+                <h3>
+                    {{ translations.get(
+                        "pesticide_cost_share",
+                        "Pesticide Cost Share"
+                    ) }}
+                </h3>
+
+                <div class="indicator-value">
+                    {{ "%.2f"|format(analysis.get("Pesticide_Cost_Share", 0)) }}%
+                </div>
+
+                <p>
+                    {{ translations.get(
+                        "pesticide_cost_share_description",
+                        "Recorded pesticide expenditure as a percentage of total recorded cultivation cost."
+                    ) }}
+                </p>
+            </div>
+
+
+            <div class="indicator-card">
+                <h3>
+                    {{ translations.get(
+                        "cotton_area_share",
+                        "Cotton Area Share"
+                    ) }}
+                </h3>
+
+                <div class="indicator-value">
+                    {{ "%.2f"|format(analysis.get("Cotton_Area_Share", 0)) }}%
+                </div>
+
+                <p>
+                    {{ translations.get(
+                        "cotton_area_share_description",
+                        "Cotton area as a share of recorded farm area."
+                    ) }}
+                </p>
+            </div>
+
+
+            <div class="indicator-card">
+                <h3>
+                    {{ translations.get(
+                        "cost_per_area",
+                        "Cost per Area"
+                    ) }}
+                </h3>
+
+                <div class="indicator-value">
+                   ₹{{ "%.2f"|format(
+    analysis.get("Total_Cost", 0) /
+    (farmer_data.get("Cotton_Area", 1)|float)
+    if (farmer_data.get("Cotton_Area", 0)|float) > 0
+    else 0
+) }}
+                </div>
+
+                <p>
+                    {{ translations.get(
+                        "cost_per_area_description",
+                        "Recorded cultivation cost relative to cotton area."
+                    ) }}
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         07 CULTIVATION COST REVIEW
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-number">07</div>
+
+        <h2>
+            {{ translations.get(
+                "cultivation_cost_review",
+                "Cultivation Cost Review"
+            ) }}
+        </h2>
+
+        <p class="section-description">
+            {{ translations.get(
+                "cultivation_cost_review_description",
+                "Review how recorded expenditure is distributed across major cultivation activities."
+            ) }}
+        </p>
+
+        <div class="chart-card">
+
+            <h3>
+                {{ translations.get(
+                    "cultivation_cost_breakdown",
+                    "Cultivation Cost Breakdown"
+                ) }}
+            </h3>
+
+            <p>
+                {{ translations.get(
+                    "cultivation_cost_breakdown_description",
+                    "Compare the recorded expenditure across major inputs."
+                ) }}
+            </p>
+
+            <div class="chart-wrapper">
+                <canvas id="costBreakdownChart"></canvas>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         08 OBSERVATIONS
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-number">08</div>
+
+        <h2>
+            {{ translations.get(
+                "evidence_based_observations",
+                "Evidence-Based Observations"
+            ) }}
+        </h2>
+
+        <p class="section-description">
+            {{ translations.get(
+                "evidence_based_observations_description",
+                "These observations are generated from the values recorded for your farm."
+            ) }}
+        </p>
+
+        <div class="observation-list">
+
+            {% for observation in analysis.get("Observations", []) %}
+
+                <div class="observation">
+                    {{ observation }}
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         09 AI / ML
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-number">09</div>
+
+        <h2>
+            {{ translations.get(
+                "ai_ml_insight_layer",
+                "AI / ML Insight Layer"
+            ) }}
+        </h2>
+
+        <p class="section-description">
+            {{ translations.get(
+                "ai_ml_insight_layer_description",
+                "AgroReForm is designed to extend statistical analysis with machine-learning-based pattern identification."
+            ) }}
+        </p>
+
+        <div class="ai-intro">
+
+            <h3 style="margin-bottom: 8px; color: #31513a;">
+                {{ translations.get(
+                    "personalized_farm_intelligence",
+                    "Personalized Farm Intelligence"
+                ) }}
+            </h3>
+
+            {{ translations.get(
+                "personalized_farm_intelligence_description",
+                "The current page uses validated farm data and statistical indicators. Machine-learning insights should be generated only when sufficient validated historical records are available."
+            ) }}
+
+        </div>
+
+        <div class="ai-grid">
+
+            <div class="ai-card">
+                <h3>
+                    {{ translations.get(
+                        "data_analysis",
+                        "Data Analysis"
+                    ) }}
+                </h3>
+
+                <p>
+                    {{ translations.get(
+                        "data_analysis_description",
+                        "Farm-level cost, production and input patterns are analysed."
+                    ) }}
+                </p>
+            </div>
+
+
+            <div class="ai-card">
+                <h3>
+                    {{ translations.get(
+                        "pattern_detection",
+                        "Pattern Detection"
+                    ) }}
+                </h3>
+
+                <p>
+                    {{ translations.get(
+                        "pattern_detection_description",
+                        "Future ML models can identify recurring agricultural patterns from validated records."
+                    ) }}
+                </p>
+            </div>
+
+
+            <div class="ai-card">
+                <h3>
+                    {{ translations.get(
+                        "farmer_awareness",
+                        "Farmer Awareness"
+                    ) }}
+                </h3>
+
+                <p>
+                    {{ translations.get(
+                        "farmer_awareness_description",
+                        "Analytical findings can be converted into simple farmer-oriented awareness."
+                    ) }}
+                </p>
+            </div>
+
+        </div>
+    </section>
+    <!-- =========================
+     10 AGRICULTURAL RISK ANALYSIS
+========================= -->
+
+<section class="section">
+
+    <div class="section-number">10</div>
+
+    <h2>
+        {{ translations.get(
+            "agricultural_risk_analysis",
+            "Agricultural Risk Analysis"
+        ) }}
+    </h2>
+
+    <p class="section-description">
+        {{ translations.get(
+            "agricultural_risk_analysis_description",
+            "Analytical indicators generated from recorded financial, production and input-use data."
+        ) }}
+    </p>
+
+    <div class="risk-analysis-grid">
+
+        <!-- ECONOMIC STRESS -->
+
+        <div class="risk-card">
+
+            <h3>
+                Economic Stress Pattern
+            </h3>
+
+            <p class="risk-card-description">
+                Relationship between recorded cultivation expenditure
+                and estimated recorded revenue.
+            </p>
+
+            <div class="risk-status" id="economicStatus">
+                ANALYSING PATTERN
+            </div>
+
+            <div
+                class="risk-gauge"
+                id="economicGauge"
+                style="--gauge-angle: 0deg;"
+            >
+                <div class="risk-gauge-inner">
+                    <div
+                        class="risk-gauge-value"
+                        id="economicGaugeValue"
+                    >
+                        0%
+                    </div>
+
+                    <div class="risk-gauge-label">
+                        Cost Pressure
+                    </div>
+                </div>
+            </div>
+
+            <div class="risk-dots" id="economicDots">
+                <span class="risk-dot"></span>
+                <span class="risk-dot"></span>
+                <span class="risk-dot"></span>
+                <span class="risk-dot"></span>
+                <span class="risk-dot"></span>
+            </div>
+
+            <div class="risk-supporting">
+
+                <div>
+                    <span>Recorded Cost</span>
+                    <span id="riskCost">₹0</span>
+                </div>
+
+                <div>
+                    <span>Recorded Revenue</span>
+                    <span id="riskRevenue">₹0</span>
+                </div>
+
+                <div>
+                    <span>Net Return</span>
+                    <span id="riskReturn">₹0</span>
+                </div>
+
+            </div>
+
+            <div class="risk-interpretation" id="economicInterpretation">
+                Analysing the recorded financial relationship.
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTIVITY -->
+
+        <div class="risk-card">
+
+            <h3>
+                Productivity Concern
+            </h3>
+
+            <p class="risk-card-description">
+                Relationship between recorded production and
+                recorded agricultural area.
+            </p>
+
+            <div class="risk-status" id="productivityStatus">
+                ANALYSING PATTERN
+            </div>
+
+            <div
+                class="risk-gauge"
+                id="productivityGauge"
+                style="--gauge-angle: 0deg;"
+            >
+                <div class="risk-gauge-inner">
+
+                    <div
+                        class="risk-gauge-value"
+                        id="productivityGaugeValue"
+                    >
+                        0
+                    </div>
+
+                    <div class="risk-gauge-label">
+                        Production / Area
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="risk-dots" id="productivityDots">
+                <span class="risk-dot"></span>
+                <span class="risk-dot"></span>
+                <span class="risk-dot"></span>
+                <span class="risk-dot"></span>
+                <span class="risk-dot"></span>
+            </div>
+
+            <div class="risk-supporting">
+
+                <div>
+                    <span>Production</span>
+                    <span id="riskProduction">0</span>
+                </div>
+
+                <div>
+                    <span>Recorded Area</span>
+                    <span id="riskArea">0</span>
+                </div>
+
+                <div>
+                    <span>Production / Area</span>
+                    <span id="riskYield">0</span>
+                </div>
+
+            </div>
+
+            <div class="risk-interpretation" id="productivityInterpretation">
+                Analysing the recorded production relationship.
+            </div>
+
+        </div>
+
+
+        <!-- CROP HEALTH -->
+
+        <div class="risk-card">
+
+            <h3>
+                Crop Health & Input-Use Pattern
+            </h3>
+
+            <p class="risk-card-description">
+                Relationship between recorded pesticide expenditure
+                and reported crop-health conditions.
+            </p>
+
+            <div class="risk-status" id="cropStatus">
+                ANALYSING PATTERN
+            </div>
+
+            <div
+                class="risk-gauge"
+                id="cropGauge"
+                style="--gauge-angle: 0deg;"
+            >
+                <div class="risk-gauge-inner">
+
+                    <div
+                        class="risk-gauge-value"
+                        id="cropGaugeValue"
+                    >
+                        0%
+                    </div>
+
+                    <div class="risk-gauge-label">
+                        Input Share
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="risk-dots" id="cropDots">
+                <span class="risk-dot"></span>
+                <span class="risk-dot"></span>
+                <span class="risk-dot"></span>
+                <span class="risk-dot"></span>
+                <span class="risk-dot"></span>
+            </div>
+
+            <div class="risk-supporting">
+
+                <div>
+                    <span>Pesticide Cost</span>
+                    <span id="riskPesticide">₹0</span>
+                </div>
+
+                <div>
+                    <span>Pesticide Cost Share</span>
+                    <span id="riskPesticideShare">0%</span>
+                </div>
+
+                <div>
+                    <span>Reported Problem</span>
+                    <span id="riskProblem">Recorded</span>
+                </div>
+
+            </div>
+
+            <div class="risk-interpretation" id="cropInterpretation">
+                Analysing recorded crop-health and input-use information.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="risk-note">
+
+        <strong>
+            Interpretation note:
+        </strong>
+
+        These indicators represent observed patterns in the
+        recorded data. They do not establish causation and should
+        be treated as decision-support indicators requiring
+        further agricultural investigation.
+
+    </div>
+
+</section>
+
+
+    
+
+
+    <!-- =========================
+         11 REPORTED PROBLEM
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-number">11</div>
+
+        <h2>
+            {{ translations.get(
+                "reported_agricultural_problem",
+                "Reported Agricultural Problem"
+            ) }}
+        </h2>
+
+        <p class="section-description">
+            {{ translations.get(
+                "reported_problem_description",
+                "The main problem reported during farm registration."
+            ) }}
+        </p>
+
+        <div class="problem-box">
+
+            <div class="problem-label">
+                {{ translations.get(
+                    "your_recorded_problem",
+                    "Your recorded problem"
+                ) }}
+            </div>
+
+            <div class="problem-value">
+                {% set problem = farmer_data.get("Major_Problem", "") %}
+
+                {% if problem and problem|string|lower not in ["na", "n/a", "none", ""] %}
+                    {{ problem }}
+                {% else %}
+                    {{ translations.get(
+                        "no_major_problem_reported",
+                        "No major problem reported"
+                    ) }}
+                {% endif %}
+            </div>
+
+        </div>
+        
+    </section>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!-- =====================================================
+     SECTION 12: PROFESSIONAL CROP PROBLEM REPORTING
+     ===================================================== -->
+
+
+
+<!-- =====================================================
+     SECTION 12: PROFESSIONAL CROP PROBLEM REPORTING
+     ===================================================== -->
+
+<section class="section crop-report-section">
+
+    <div class="crop-report-header">
+        <div>
+            <span class="crop-report-eyebrow">AGROREFORM | CROP HEALTH</span>
+            <h2>Report a Crop Problem</h2>
+            <p>
+    Facing a problem in your crop . Report the issue, describe
+    the symptoms and tell us what actions you have already taken.
+    AgroReForm aims to help identify suitable ways to address
+    agricultural problems.
+</p>
+        </div>
+
+        <div class="crop-report-icon">🌿</div>
+    </div>
+
+    <form action="{{ url_for('report_crop_problem') }}"
+          method="POST"
+          class="crop-report-form">
+
+        <!-- PART 01: PROBLEM IDENTIFICATION -->
+
+        <div class="report-form-part">
+
+            <div class="report-part-heading">
+                <span>01</span>
+                <div>
+                    <h3>Problem Identification</h3>
+                    <p>Identify the agricultural problem.</p>
+                </div>
+            </div>
+
+            <div class="report-grid">
+
+                <div class="report-field">
+                    <label for="category">Problem Category *</label>
+
+                    <select id="category" name="category" required>
+                        <option value="">Select category</option>
+                        <option value="Insect Pest">Insect Pest</option>
+                        <option value="Crop Disease">Crop Disease</option>
+                        <option value="Nutritional Problem">Nutritional Problem</option>
+                        <option value="Soil / Water Problem">Soil / Water Problem</option>
+                        <option value="Cultivation / Management">Cultivation / Management</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="report-field">
+                    <label for="specific_problem">Specific Problem *</label>
+
+                    <input
+                        type="text"
+                        id="specific_problem"
+                        name="specific_problem"
+                        placeholder="e.g. Whitefly, Pink Bollworm"
+                        required>
+                </div>
+
+                <div class="report-field full-width">
+                    <label for="crop_stage">Current Crop Stage *</label>
+
+                    <select id="crop_stage" name="crop_stage" required>
+                        <option value="">Select crop stage</option>
+                        <option value="Germination">Germination</option>
+                        <option value="Seedling">Seedling</option>
+                        <option value="Vegetative Growth">Vegetative Growth</option>
+                        <option value="Flowering">Flowering</option>
+                        <option value="Boll Formation">Boll Formation</option>
+                        <option value="Boll Opening">Boll Opening</option>
+                        <option value="Harvesting">Harvesting</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PART 02: FIELD OBSERVATIONS -->
+
+        <div class="report-form-part">
+
+            <div class="report-part-heading">
+                <span>02</span>
+                <div>
+                    <h3>Field Observations</h3>
+                    <p>Describe the symptoms and affected area.</p>
+                </div>
+            </div>
+
+            <div class="report-grid">
+
+                <div class="report-field full-width">
+                    <label for="symptoms">Symptoms Observed *</label>
+
+                    <textarea
+                        id="symptoms"
+                        name="symptoms"
+                        rows="4"
+                        placeholder="Describe what you observe on leaves, stems, flowers or cotton bolls..."
+                        required></textarea>
+                </div>
+
+                <div class="report-field">
+                    <label for="affected_area">Approximate Affected Area</label>
+
+                    <input
+                        type="text"
+                        id="affected_area"
+                        name="affected_area"
+                        placeholder="e.g. 1 acre or 20% of field">
+                </div>
+
+                <div class="report-field">
+                    <label for="severity">Problem Severity *</label>
+
+                    <select id="severity" name="severity" required>
+                        <option value="">Select severity</option>
+                        <option value="Low">Low</option>
+                        <option value="Moderate">Moderate</option>
+                        <option value="High">High</option>
+                        <option value="Severe">Severe</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PART 03: PREVIOUS MANAGEMENT -->
+
+        <div class="report-form-part">
+
+            <div class="report-part-heading">
+                <span>03</span>
+                <div>
+                    <h3>Previous Management</h3>
+                    <p>Tell us what actions have already been taken.</p>
+                </div>
+            </div>
+
+            <div class="report-grid">
+
+                <div class="report-field full-width">
+                    <label for="previous_action">Action Already Taken</label>
+
+                    <textarea
+                        id="previous_action"
+                        name="previous_action"
+                        rows="3"
+                        placeholder="Mention any treatment or management action already taken..."></textarea>
+                </div>
+
+                <div class="report-field full-width">
+                    <label for="additional_notes">Additional Information</label>
+
+                    <textarea
+                        id="additional_notes"
+                        name="additional_notes"
+                        rows="3"
+                        placeholder="Provide any other relevant information..."></textarea>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SUBMISSION -->
+
+        <div class="report-submit-area">
+
+            <div class="report-disclaimer">
+                <span>ⓘ</span>
+                <p>
+                    This report records farmer-provided observations.
+                    It does not represent an expert-confirmed diagnosis.
+                </p>
+            </div>
+
+           <button
+    type="submit"
+    class="report-submit-button"
+    onclick="console.log('Crop report button clicked');"
+>
+    Submit Crop Problem Report →
+</button>
+        </div>
+
+    </form>
+
+</section>
+
+    <!-- =========================
+         BOTTOM ACTIONS
+    ========================= -->
+
+    <div class="bottom-actions">
+
+        <a
+            href="{{ url_for('farmer') }}"
+            class="primary-btn"
+        >
+            {{ translations.get(
+                "analyse_another_farm",
+                "Analyse Another Farm"
+            ) }}
+        </a>
+
+        <a
+            href="{{ url_for('home') }}"
+            class="secondary-btn"
+        >
+            {{ translations.get(
+                "home",
+                "Home"
+            ) }}
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         SIMPLE FOOTER
+    ========================= -->
+
+    <footer class="simple-footer">
+
+        <strong>AgroReForm</strong>
+
+        <span>
+            {{ translations.get(
+                "analysis_footer",
+                "Agricultural Intelligence for Better Farming Decisions"
+            ) }}
+        </span>
+
+    </footer>
+
+</main>
+
+
+<!-- =========================
+     CHART DATA
+========================= -->
+
+<div
+    id="chartData"
+    hidden
+
+    data-total-cost="{{ analysis.get('Total_Cost', 0) }}"
+    data-total-revenue="{{ analysis.get('Total_Revenue', 0) }}"
+
+    data-seed="{{ farmer_data.get('Seed_Cost', 0) }}"
+    data-fertilizer="{{ farmer_data.get('Fertilizer_Cost', 0) }}"
+    data-pesticide="{{ farmer_data.get('Pesticide_Cost', 0) }}"
+    data-labour="{{ farmer_data.get('Labour_Cost', 0) }}"
+    data-irrigation="{{ farmer_data.get('Irrigation_Cost', 0) }}"
+    data-machinery="{{ farmer_data.get('Machinery_Cost', 0) }}"
+
+    data-other-cost="{{ farmer_data.get(
+        'Other_Cost',
+        farmer_data.get('Other_Cultivation_Cost', 0)
+    ) }}"
+></div>
+
+
+<script>
+    /* =========================
+       LANGUAGE
+    ========================= */
+
+    function changeLanguage(language) {
+        window.location.href =
+            "{{ url_for('set_language', language='__LANGUAGE__') }}"
+            .replace("__LANGUAGE__", language);
+    }
+
+
+    /* =========================
+       SAFE NUMBER FUNCTION
+    ========================= */
+
+    function getNumber(value) {
+        const number = parseFloat(value);
+        return Number.isFinite(number) ? number : 0;
+    }
+
+
+    /* =========================
+       READ CHART DATA
+    ========================= */
+
+    const chartData = document.getElementById("chartData");
+
+    const totalCost =
+        getNumber(chartData.dataset.totalCost);
+
+    const totalRevenue =
+        getNumber(chartData.dataset.totalRevenue);
+
+    const seedCost =
+        getNumber(chartData.dataset.seed);
+
+    const fertilizerCost =
+        getNumber(chartData.dataset.fertilizer);
+
+    const pesticideCost =
+        getNumber(chartData.dataset.pesticide);
+
+    const labourCost =
+        getNumber(chartData.dataset.labour);
+
+    const irrigationCost =
+        getNumber(chartData.dataset.irrigation);
+
+    const machineryCost =
+        getNumber(chartData.dataset.machinery);
+
+    const otherCost =
+        getNumber(chartData.dataset.otherCost);
+
+
+    /* =========================
+       FINANCIAL CHART
+    ========================= */
+
+    const financialCanvas =
+        document.getElementById("financialChart");
+
+    if (financialCanvas) {
+
+        new Chart(financialCanvas, {
+            type: "bar",
+
+            data: {
+                labels: [
+                    "{{ translations.get('total_cultivation_cost', 'Cultivation Cost') }}",
+                    "{{ translations.get('estimated_revenue', 'Estimated Revenue') }}"
+                ],
+
+                datasets: [{
+                    label: "{{ translations.get('amount', 'Amount') }}",
+
+                    data: [
+                        totalCost,
+                        totalRevenue
+                    ],
+
+                    borderWidth: 1
+                }]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+
+                scales: {
+                    y: {
+                        beginAtZero: true,
+
+                        ticks: {
+                            callback: function(value) {
+                                return "₹" + value;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+
+    /* =========================
+       INPUT COST DOUGHNUT
+    ========================= */
+
+    const inputCanvas =
+        document.getElementById("inputChart");
+
+    if (inputCanvas) {
+
+        new Chart(inputCanvas, {
+            type: "doughnut",
+
+            data: {
+                labels: [
+                    "{{ translations.get('seed', 'Seed') }}",
+                    "{{ translations.get('fertilizer', 'Fertilizer') }}",
+                    "{{ translations.get('pesticide', 'Pesticide') }}",
+                    "{{ translations.get('labour', 'Labour') }}",
+                    "{{ translations.get('irrigation', 'Irrigation') }}",
+                    "{{ translations.get('machinery', 'Machinery') }}",
+                    "{{ translations.get('other_cost', 'Other') }}"
+                ],
+
+                datasets: [{
+                    data: [
+                        seedCost,
+                        fertilizerCost,
+                        pesticideCost,
+                        labourCost,
+                        irrigationCost,
+                        machineryCost,
+                        otherCost
+                    ],
+
+                    borderWidth: 1
+                }]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+
+                plugins: {
+                    legend: {
+                        position: "bottom"
+                    }
+                }
+            }
+        });
+    }
+
+
+    /* =========================
+       COST BREAKDOWN CHART
+    ========================= */
+
+    const costCanvas =
+        document.getElementById("costBreakdownChart");
+
+    if (costCanvas) {
+
+        new Chart(costCanvas, {
+            type: "bar",
+
+            data: {
+                labels: [
+                    "{{ translations.get('seed', 'Seed') }}",
+                    "{{ translations.get('fertilizer', 'Fertilizer') }}",
+                    "{{ translations.get('pesticide', 'Pesticide') }}",
+                    "{{ translations.get('labour', 'Labour') }}",
+                    "{{ translations.get('irrigation', 'Irrigation') }}",
+                    "{{ translations.get('machinery', 'Machinery') }}",
+                    "{{ translations.get('other_cost', 'Other') }}"
+                ],
+
+                datasets: [{
+                    label: "{{ translations.get('cultivation_cost', 'Cultivation Cost') }}",
+
+                    data: [
+                        seedCost,
+                        fertilizerCost,
+                        pesticideCost,
+                        labourCost,
+                        irrigationCost,
+                        machineryCost,
+                        otherCost
+                    ],
+
+                    borderWidth: 1
+                }]
+            },
+
+            options: {
+                indexAxis: "y",
+
+                responsive: true,
+                maintainAspectRatio: false,
+
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+
+                scales: {
+                    x: {
+                        beginAtZero: true,
+
+                        ticks: {
+                            callback: function(value) {
+                                return "₹" + value;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+    /* =========================
+   AGRICULTURAL RISK ANALYSIS
+========================= */
+
+const riskProduction =
+    getNumber(
+        "{{ farmer_data.get('Production', 0) }}"
+    );
+
+const riskArea =
+    getNumber(
+        "{{ farmer_data.get('Cotton_Area', 0) }}"
+    );
+
+const riskPesticide =
+    pesticideCost;
+
+const riskNetReturn =
+    totalRevenue - totalCost;
+
+
+/* =========================
+   ECONOMIC STRESS
+========================= */
+
+const economicPressure =
+    totalRevenue > 0
+        ? (totalCost / totalRevenue) * 100
+        : 0;
+
+const economicAngle =
+    Math.min(economicPressure, 100) * 3.6;
+
+const economicGauge =
+    document.getElementById("economicGauge");
+
+if (economicGauge) {
+
+    economicGauge.style.setProperty(
+        "--gauge-angle",
+        economicAngle + "deg"
+    );
+
+}
+
+document.getElementById(
+    "economicGaugeValue"
+).textContent =
+    economicPressure.toFixed(1) + "%";
+
+document.getElementById(
+    "riskCost"
+).textContent =
+    "₹" + totalCost.toLocaleString("en-IN");
+
+document.getElementById(
+    "riskRevenue"
+).textContent =
+    "₹" + totalRevenue.toLocaleString("en-IN");
+
+document.getElementById(
+    "riskReturn"
+).textContent =
+    "₹" + riskNetReturn.toLocaleString("en-IN");
+
+
+/* ECONOMIC DOTS */
+
+const economicLevel =
+    Math.min(
+        5,
+        Math.max(
+            1,
+            Math.ceil(economicPressure / 20)
+        )
+    );
+
+document
+    .querySelectorAll("#economicDots .risk-dot")
+    .forEach(function(dot, index) {
+
+        dot.classList.toggle(
+            "active",
+            index < economicLevel
+        );
+
+    });
+
+
+document.getElementById(
+    "economicStatus"
+).textContent =
+    economicPressure > 60
+        ? "PATTERN REQUIRES ATTENTION"
+        : "FINANCIAL PATTERN OBSERVED";
+
+
+document.getElementById(
+    "economicInterpretation"
+).textContent =
+    economicPressure > 60
+        ? "Recorded cultivation expenditure represents a substantial share of recorded revenue. This combination indicates an economic condition requiring further attention."
+        : "The recorded financial values show a measurable relationship between cultivation expenditure and revenue. This indicator should be interpreted with the farm's wider agricultural conditions.";
+
+
+/* =========================
+   PRODUCTIVITY
+========================= */
+
+const productivity =
+    riskArea > 0
+        ? riskProduction / riskArea
+        : 0;
+
+document.getElementById(
+    "riskProduction"
+).textContent =
+    riskProduction.toLocaleString("en-IN");
+
+document.getElementById(
+    "riskArea"
+).textContent =
+    riskArea.toLocaleString("en-IN");
+
+document.getElementById(
+    "riskYield"
+).textContent =
+    productivity.toFixed(2);
+
+document.getElementById(
+    "productivityGaugeValue"
+).textContent =
+    productivity.toFixed(2);
+
+
+/*
+   This visual scale is only an analytical display.
+   It is NOT an official agricultural benchmark.
+*/
+
+const productivityVisual =
+    Math.min(
+        100,
+        productivity * 20
+    );
+
+const productivityGauge =
+    document.getElementById(
+        "productivityGauge"
+    );
+
+if (productivityGauge) {
+
+    productivityGauge.style.setProperty(
+        "--gauge-angle",
+        productivityVisual * 3.6 + "deg"
+    );
+
+}
+
+
+/* PRODUCTIVITY DOTS */
+
+const productivityLevel =
+    Math.min(
+        5,
+        Math.max(
+            1,
+            Math.ceil(productivityVisual / 20)
+        )
+    );
+
+document
+    .querySelectorAll("#productivityDots .risk-dot")
+    .forEach(function(dot, index) {
+
+        dot.classList.toggle(
+            "active",
+            index < productivityLevel
+        );
+
+    });
+
+
+document.getElementById(
+    "productivityStatus"
+).textContent =
+    "PRODUCTIVITY INDICATOR";
+
+document.getElementById(
+    "productivityInterpretation"
+).textContent =
+    "Recorded production is being interpreted relative to the recorded agricultural area. Multiple seasons or wider district data are required for stronger trend-based conclusions.";
+
+
+/* =========================
+   CROP HEALTH & INPUT USE
+========================= */
+
+const pesticideShare =
+    totalCost > 0
+        ? (riskPesticide / totalCost) * 100
+        : 0;
+
+document.getElementById(
+    "riskPesticide"
+).textContent =
+    "₹" + riskPesticide.toLocaleString("en-IN");
+
+document.getElementById(
+    "riskPesticideShare"
+).textContent =
+    pesticideShare.toFixed(1) + "%";
+
+
+const cropAngle =
+    Math.min(
+        pesticideShare,
+        100
+    ) * 3.6;
+
+const cropGauge =
+    document.getElementById(
+        "cropGauge"
+    );
+
+if (cropGauge) {
+
+    cropGauge.style.setProperty(
+        "--gauge-angle",
+        cropAngle + "deg"
+    );
+
+}
+
+document.getElementById(
+    "cropGaugeValue"
+).textContent =
+    pesticideShare.toFixed(1) + "%";
+
+
+const cropLevel =
+    Math.min(
+        5,
+        Math.max(
+            1,
+            Math.ceil(pesticideShare / 20)
+        )
+    );
+
+document
+    .querySelectorAll("#cropDots .risk-dot")
+    .forEach(function(dot, index) {
+
+        dot.classList.toggle(
+            "active",
+            index < cropLevel
+        );
+
+    });
+
+
+document.getElementById(
+    "cropStatus"
+).textContent =
+    pesticideShare > 20
+        ? "INPUT-USE PATTERN OBSERVED"
+        : "INPUT-USE INDICATOR";
+
+
+document.getElementById(
+    "cropInterpretation"
+).textContent =
+    "Pesticide expenditure is interpreted together with recorded crop-health information. The relationship does not by itself establish that pesticide use caused or solved a crop-health problem.";
+</script>
+
+</body>
+</html>

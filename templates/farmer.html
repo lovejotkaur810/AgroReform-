@@ -1,0 +1,1421 @@
+
+<!DOCTYPE html>
+<html lang="{{ current_language }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        AgroReForm | {{ translations.get("farmer_portal", "Farmer Portal") }}
+    </title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Farmer Portal CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='farmer.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="farmer-header">
+
+    <div class="header-inner">
+
+
+        <!-- BRAND -->
+
+        <a href="/"
+           class="brand">
+
+            <img
+                src="{{ url_for('static', filename='agroreform_logo.png') }}"
+                alt="AgroReForm">
+
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="farmer-nav">
+
+            <a href="/"
+               class="nav-link">
+
+                {{ translations.get("home", "Home") }}
+
+            </a>
+
+
+            <a href="/farmer"
+               class="nav-link active">
+
+                {{ translations.get("farmer_portal", "Farmer Portal") }}
+
+            </a>
+
+
+            <a href="/farmer-login"
+               class="nav-link">
+
+                {{ translations.get("existing_farmer", "Existing Farmer") }}
+
+            </a>
+
+        </nav>
+
+
+        <!-- LANGUAGE -->
+
+        <div class="language-box">
+
+            <span>🌐</span>
+
+            <select
+    id="language"
+    name="language"
+    onchange="window.location.href='/set-language/' + this.value"
+>
+            >
+
+                <option value="en"
+                    {% if current_language == "en" %}selected{% endif %}>
+                    English
+                </option>
+
+                <option value="pa"
+                    {% if current_language == "pa" %}selected{% endif %}>
+                    ਪੰਜਾਬੀ
+                </option>
+
+                <option value="hi"
+                    {% if current_language == "hi" %}selected{% endif %}>
+                    हिन्दी
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     PAGE INTRO
+     ===================================================== -->
+
+<section class="page-intro">
+
+    <div class="intro-content">
+
+        <div class="intro-badge">
+
+            {{ translations.get("farmer_portal_badge", "FARMER PORTAL") }}
+
+        </div>
+
+
+        <h1>
+
+            {{ translations.get(
+                "understand_your_farm",
+                "Let's understand your farm."
+            ) }}
+
+        </h1>
+
+
+        <p>
+
+            {{ translations.get(
+                "farm_intro",
+                "Provide your farm information to help AgroReForm analyse agricultural conditions, costs, production and potential risk patterns."
+            ) }}
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+     ===================================================== -->
+
+<main class="main-container">
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress-card">
+
+        <div class="progress-top">
+
+            <div>
+
+                <span class="progress-label">
+
+                    {{ translations.get(
+                        "farm_data_collection",
+                        "FARM DATA COLLECTION"
+                    ) }}
+
+                </span>
+
+
+                <h2>
+
+                    {{ translations.get(
+                        "your_farm_information",
+                        "Your farm information"
+                    ) }}
+
+                </h2>
+
+            </div>
+
+
+            <div class="progress-number">
+
+                01 / 04
+
+            </div>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+
+        <div class="progress-text">
+
+            <span>
+
+                {{ translations.get(
+                    "step",
+                    "Step"
+                ) }}
+                1
+
+            </span>
+
+
+            <span>
+
+                {{ translations.get(
+                    "farmer_profile",
+                    "Farmer Profile"
+                ) }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         FARM DATA FORM
+         ================================================= -->
+
+    <form action="{{ url_for('farmer') }}"
+          method="POST"
+          class="farm-form">
+
+
+<!-- =================================================
+     SECTION 0 — FARMER ACCOUNT
+     ================================================= -->
+
+<section class="form-card">
+
+    <div class="section-heading">
+
+        <div class="section-icon green">
+            00
+        </div>
+
+        <div>
+            <span>FARMER ACCOUNT</span>
+            <h2>Create your AgroReForm account</h2>
+        </div>
+
+    </div>
+
+    <div class="info-message">
+        <span class="info-icon">✓</span>
+        <p>
+            Your unique Farmer ID will be generated after
+            successful registration. Create a password to
+            securely access your account later.
+        </p>
+    </div>
+
+    <div class="form-grid">
+
+        <div class="form-group">
+
+            <label for="password">
+                Create Password <span>*</span>
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                minlength="8"
+                autocomplete="new-password"
+                placeholder="At least 8 characters"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="confirm_password">
+                Confirm Password <span>*</span>
+            </label>
+
+            <input
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                minlength="8"
+                autocomplete="new-password"
+                placeholder="Enter your password again"
+                required>
+
+        </div>
+
+    </div>
+
+    <p id="password-error"
+       style="color:#b42318; display:none; margin-top:12px;">
+        Passwords do not match. Please check again.
+    </p>
+
+</section>
+
+
+
+        <!-- =================================================
+             SECTION 1 — FARMER PROFILE
+             ================================================= -->
+
+        <section class="form-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon green">
+                    01
+                </div>
+
+
+                <div>
+
+                    <span>
+
+                        {{ translations.get(
+                            "farmer_profile",
+                            "FARMER PROFILE"
+                        ) }}
+
+                    </span>
+
+
+                    <h2>
+
+                        {{ translations.get(
+                            "location_information",
+                            "Tell us about your location"
+                        ) }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-message">
+
+                <span class="info-icon">
+                    ✓
+                </span>
+
+
+                <p>
+
+                    {{ translations.get(
+                        "farmer_id_message",
+                        "Your AgroReForm Farmer ID will be generated automatically after registration."
+                    ) }}
+
+                </p>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "district",
+                            "District"
+                        ) }}
+
+                        <span>*</span>
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        name="district"
+                        placeholder="{{ translations.get('district_placeholder', 'e.g. Bathinda') }}"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "block_tehsil",
+                            "Block / Tehsil"
+                        ) }}
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        name="block"
+                        placeholder="{{ translations.get('block_placeholder', 'Enter block or tehsil') }}">
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+
+                        {{ translations.get(
+                            "village",
+                            "Village"
+                        ) }}
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        name="village"
+                        placeholder="{{ translations.get('village_placeholder', 'Enter village name') }}">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "land_ownership",
+                            "Land Ownership"
+                        ) }}
+
+                        <span>*</span>
+
+                    </label>
+
+
+                    <select
+                        name="land_ownership"
+                        required>
+
+                        <option value="">
+
+                            {{ translations.get(
+                                "select_ownership",
+                                "Select ownership"
+                            ) }}
+
+                        </option>
+
+
+                        <option value="Own">
+
+                            {{ translations.get(
+                                "own",
+                                "Own"
+                            ) }}
+
+                        </option>
+
+
+                        <option value="Leased">
+
+                            {{ translations.get(
+                                "leased",
+                                "Leased"
+                            ) }}
+
+                        </option>
+
+
+                        <option value="Partly Own + Partly Leased">
+
+                            {{ translations.get(
+                                "partly_own_leased",
+                                "Partly Own + Partly Leased"
+                            ) }}
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "total_farm_area",
+                            "Total Farm Area"
+                        ) }}
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        name="farm_area"
+                        step="0.01"
+                        min="0"
+                        placeholder="{{ translations.get('farm_area_placeholder', 'e.g. 5') }}">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "area_unit",
+                            "Area Unit"
+                        ) }}
+
+                    </label>
+
+
+                    <select name="area_unit">
+
+                        <option value="Acre">
+
+                            {{ translations.get(
+                                "acre",
+                                "Acre"
+                            ) }}
+
+                        </option>
+
+
+                        <option value="Hectare">
+
+                            {{ translations.get(
+                                "hectare",
+                                "Hectare"
+                            ) }}
+
+                        </option>
+
+
+                        <option value="Other">
+
+                            {{ translations.get(
+                                "other",
+                                "Other"
+                            ) }}
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 2 — COTTON FARM
+             ================================================= -->
+
+        <section class="form-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon cotton">
+                    02
+                </div>
+
+
+                <div>
+
+                    <span>
+
+                        {{ translations.get(
+                            "cotton_farm",
+                            "COTTON FARM"
+                        ) }}
+
+                    </span>
+
+
+                    <h2>
+
+                        {{ translations.get(
+                            "crop_information",
+                            "Tell us about your crop"
+                        ) }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="crop-banner">
+
+                <div class="cotton-symbol">
+                    🌿
+                </div>
+
+
+                <div>
+
+                    <strong>
+
+                        {{ translations.get(
+                            "primary_research_crop",
+                            "Primary research crop"
+                        ) }}
+
+                    </strong>
+
+
+                    <p>
+
+                        {{ translations.get(
+                            "cotton_focus_message",
+                            "AgroReForm currently focuses on cotton farming in Punjab's Malwa region."
+                        ) }}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "crop",
+                            "Crop"
+                        ) }}
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        name="crop"
+                        value="Cotton"
+                        readonly>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "cotton_area",
+                            "Cotton Area"
+                        ) }}
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        name="cotton_area"
+                        step="0.01"
+                        min="0"
+                        placeholder="{{ translations.get('cotton_area_placeholder', 'e.g. 5') }}">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "cotton_variety",
+                            "Cotton Variety"
+                        ) }}
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        name="cotton_variety"
+                        placeholder="{{ translations.get('cotton_variety_placeholder', 'Enter variety') }}">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "farming_year",
+                            "Farming Year"
+                        ) }}
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        name="farming_year"
+                        min="1900"
+                        max="2100"
+                        placeholder="{{ translations.get('farming_year_placeholder', 'e.g. 2026') }}">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "previous_crop",
+                            "Previous Crop"
+                        ) }}
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        name="previous_crop"
+                        placeholder="{{ translations.get('previous_crop_placeholder', 'e.g. Wheat') }}">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "irrigation_type",
+                            "Irrigation Type"
+                        ) }}
+
+                    </label>
+
+
+                    <select name="irrigation_type">
+
+                        <option value="">
+
+                            {{ translations.get(
+                                "select_irrigation",
+                                "Select irrigation"
+                            ) }}
+
+                        </option>
+
+
+                        <option value="Canal">
+
+                            {{ translations.get(
+                                "canal",
+                                "Canal"
+                            ) }}
+
+                        </option>
+
+
+                        <option value="Tube Well">
+
+                            {{ translations.get(
+                                "tube_well",
+                                "Tube Well"
+                            ) }}
+
+                        </option>
+
+
+                        <option value="Both">
+
+                            {{ translations.get(
+                                "both",
+                                "Both"
+                            ) }}
+
+                        </option>
+
+
+                        <option value="Rain-fed">
+
+                            {{ translations.get(
+                                "rain_fed",
+                                "Rain-fed"
+                            ) }}
+
+                        </option>
+
+
+                        <option value="Other">
+
+                            {{ translations.get(
+                                "other",
+                                "Other"
+                            ) }}
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "number_of_irrigations",
+                            "Number of Irrigations"
+                        ) }}
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        name="number_of_irrigations"
+                        min="0"
+                        placeholder="{{ translations.get('irrigations_placeholder', 'e.g. 6') }}">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 3 — CULTIVATION COST
+             ================================================= -->
+
+        <section class="form-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon cost">
+                    03
+                </div>
+
+
+                <div>
+
+                    <span>
+
+                        {{ translations.get(
+                            "cultivation_cost",
+                            "CULTIVATION COST"
+                        ) }}
+
+                    </span>
+
+
+                    <h2>
+
+                        {{ translations.get(
+                            "farm_expenses",
+                            "Understand your farm expenses"
+                        ) }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <p class="section-description">
+
+                {{ translations.get(
+                    "cost_description",
+                    "Enter approximate cultivation expenses. These values help AgroReForm understand the economic conditions of your farming."
+                ) }}
+
+            </p>
+
+
+            <div class="cost-grid">
+
+
+                <div class="cost-item">
+
+                    <label>
+
+                        {{ translations.get(
+                            "seed_cost",
+                            "Seed Cost"
+                        ) }}
+
+                    </label>
+
+
+                    <div class="input-money">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            name="seed_cost"
+                            min="0"
+                            step="0.01"
+                            placeholder="0">
+
+                    </div>
+
+                </div>
+
+
+                <div class="cost-item">
+
+                    <label>
+
+                        {{ translations.get(
+                            "fertilizer_cost",
+                            "Fertilizer Cost"
+                        ) }}
+
+                    </label>
+
+
+                    <div class="input-money">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            name="fertilizer_cost"
+                            min="0"
+                            step="0.01"
+                            placeholder="0">
+
+                    </div>
+
+                </div>
+
+
+                <div class="cost-item">
+
+                    <label>
+
+                        {{ translations.get(
+                            "pesticide_cost",
+                            "Pesticide Cost"
+                        ) }}
+
+                    </label>
+
+
+                    <div class="input-money">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            name="pesticide_cost"
+                            min="0"
+                            step="0.01"
+                            placeholder="0">
+
+                    </div>
+
+                </div>
+
+
+                <div class="cost-item">
+
+                    <label>
+
+                        {{ translations.get(
+                            "labour_cost",
+                            "Labour Cost"
+                        ) }}
+
+                    </label>
+
+
+                    <div class="input-money">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            name="labour_cost"
+                            min="0"
+                            step="0.01"
+                            placeholder="0">
+
+                    </div>
+
+                </div>
+
+
+                <div class="cost-item">
+
+                    <label>
+
+                        {{ translations.get(
+                            "irrigation_cost",
+                            "Irrigation Cost"
+                        ) }}
+
+                    </label>
+
+
+                    <div class="input-money">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            name="irrigation_cost"
+                            min="0"
+                            step="0.01"
+                            placeholder="0">
+
+                    </div>
+
+                </div>
+
+
+                <div class="cost-item">
+
+                    <label>
+
+                        {{ translations.get(
+                            "machinery_cost",
+                            "Machinery Cost"
+                        ) }}
+
+                    </label>
+
+
+                    <div class="input-money">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            name="machinery_cost"
+                            min="0"
+                            step="0.01"
+                            placeholder="0">
+
+                    </div>
+
+                </div>
+
+
+                <div class="cost-item">
+
+                    <label>
+
+                        {{ translations.get(
+                            "other_cost",
+                            "Other Cost"
+                        ) }}
+
+                    </label>
+
+
+                    <div class="input-money">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            name="other_cost"
+                            min="0"
+                            step="0.01"
+                            placeholder="0">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 4 — PRODUCTION & RETURN
+             ================================================= -->
+
+        <section class="form-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon result">
+                    04
+                </div>
+
+
+                <div>
+
+                    <span>
+
+                        {{ translations.get(
+                            "production_return",
+                            "PRODUCTION & RETURN"
+                        ) }}
+
+                    </span>
+
+
+                    <h2>
+
+                        {{ translations.get(
+                            "farm_production_question",
+                            "What did your farm produce?"
+                        ) }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "total_cotton_production",
+                            "Total Cotton Production"
+                        ) }}
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        name="production"
+                        min="0"
+                        step="0.01"
+                        placeholder="{{ translations.get('production_placeholder', 'e.g. 18') }}">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "production_unit",
+                            "Production Unit"
+                        ) }}
+
+                    </label>
+
+
+                    <select name="production_unit">
+
+                        <option value="Quintal">
+
+                            {{ translations.get(
+                                "quintal",
+                                "Quintal"
+                            ) }}
+
+                        </option>
+
+
+                        <option value="Ton">
+
+                            {{ translations.get(
+                                "ton",
+                                "Ton"
+                            ) }}
+
+                        </option>
+
+
+                        <option value="Other">
+
+                            {{ translations.get(
+                                "other",
+                                "Other"
+                            ) }}
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "average_selling_price",
+                            "Average Selling Price per Unit"
+                        ) }}
+
+                    </label>
+
+
+                    <div class="price-input">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            name="selling_price"
+                            min="0"
+                            step="0.01"
+                            placeholder="{{ translations.get('selling_price_placeholder', 'e.g. 7000') }}">
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        {{ translations.get(
+                            "major_agricultural_problem",
+                            "Major Agricultural Problem"
+                        ) }}
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        name="major_problem"
+                        placeholder="{{ translations.get('major_problem_placeholder', 'Describe your major problem') }}">
+
+                </div>
+
+            </div>
+
+
+            <!-- DECISION SUPPORT MESSAGE -->
+
+            <div class="support-message">
+
+                <div class="support-icon">
+                    ✦
+                </div>
+
+
+                <div>
+
+                    <strong>
+
+                        {{ translations.get(
+                            "information_has_purpose",
+                            "Your information has a purpose."
+                        ) }}
+
+                    </strong>
+
+
+                    <p>
+
+                        {{ translations.get(
+                            "information_purpose_message",
+                            "AgroReForm will use your information to generate farm-level analysis and decision-support insights."
+                        ) }}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUBMIT AREA
+             ================================================= -->
+
+        <div class="submit-area">
+
+            <p>
+
+                {{ translations.get(
+                    "submission_message",
+                    "By submitting, your information will be processed for agricultural analysis."
+                ) }}
+
+            </p>
+
+
+            <button
+                type="submit"
+                class="submit-button">
+
+                <span>
+
+                    {{ translations.get(
+                        "analyse_my_farm",
+                        "Analyse My Farm"
+                    ) }}
+
+                </span>
+
+
+                <strong>
+                    →
+                </strong>
+
+            </button>
+
+        </div>
+
+
+    </form>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="farmer-footer">
+
+    <div>
+
+        <strong>
+            AgroReForm
+        </strong>
+
+
+        <span>
+
+            {{ translations.get(
+                "farmer_footer_message",
+                "Agricultural Intelligence for Better Farming Decisions"
+            ) }}
+
+        </span>
+
+    </div>
+
+</footer>
+
+<script>
+document.querySelector(".farm-form").addEventListener("submit", function(event) {
+
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirm_password").value;
+    const error = document.getElementById("password-error");
+
+    if (password !== confirmPassword) {
+        event.preventDefault();
+        error.style.display = "block";
+    } else {
+        error.style.display = "none";
+    }
+
+});
+</script>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Problem Report | AgroReForm</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 16px;
+            background: #f3f7f2;
+            color: #24352a;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .header, .card {
+            background: white;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+        }
+
+        .success {
+            color: #187442;
+            font-weight: bold;
+        }
+
+        h1 {
+            margin-top: 8px;
+            color: #205b37;
+        }
+
+        h2 {
+            color: #205b37;
+            margin-top: 0;
+        }
+
+        .detail {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        ul {
+            padding-left: 22px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .notice {
+            background: #fff8e7;
+            border-left: 4px solid #d49b28;
+            padding: 15px;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            background: #246b42;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 8px;
+        }
+
+        .button:hover {
+            background: #194d2f;
+        }
+
+        .muted {
+            color: #68766d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="header">
+        <div class="success">✓ REPORT SUBMITTED SUCCESSFULLY</div>
+        <h1>Your Crop Problem Report</h1>
+        <p>
+            AgroReForm has recorded your reported crop concern.
+            Review the information and suggested next steps below.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Reported Problem</h2>
+
+        <div class="detail">
+            <strong>Report ID:</strong> {{ report.report_id }}
+        </div>
+
+        <div class="detail">
+            <strong>Crop:</strong> {{ report.crop }}
+        </div>
+
+        <div class="detail">
+            <strong>Category:</strong> {{ report.category }}
+        </div>
+
+        <div class="detail">
+            <strong>Specific Problem:</strong> {{ report.specific_problem }}
+        </div>
+
+        <div class="detail">
+            <strong>Crop Stage:</strong> {{ report.crop_stage }}
+        </div>
+
+        <div class="detail">
+            <strong>Symptoms:</strong> {{ report.symptoms }}
+        </div>
+
+        <div class="detail">
+            <strong>Affected Area:</strong>
+            {{ report.affected_area or "Not specified" }}
+        </div>
+
+        <div class="detail">
+            <strong>Severity:</strong> {{ report.severity }}
+        </div>
+
+        <div class="detail">
+            <strong>Previous Action:</strong>
+            {{ report.previous_action or "Not specified" }}
+        </div>
+
+        <div class="detail">
+            <strong>Additional Notes:</strong>
+            {{ report.additional_notes or "None" }}
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Possible Causes to Investigate</h2>
+        <ul>
+            {% for item in report.possible_causes %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Recommended Next Steps</h2>
+        <ul>
+            {% for item in report.recommended_actions %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Prevention and Monitoring</h2>
+        <ul>
+            {% for item in report.prevention %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="notice">
+        <strong>Important agricultural guidance:</strong>
+        These are general suggestions based on the selected problem
+        category, not a confirmed crop diagnosis. The actual cause
+        should be checked in the field. For severe or worsening
+        symptoms, consult a qualified agricultural expert or your
+        local Krishi Vigyan Kendra (KVK) before applying treatment.
+    </div>
+
+    <div class="card">
+        <h2>Report Progress</h2>
+        <p>
+            Your report is saved. You can return to your existing
+            Farmer Portal later to review the report and record
+            treatment activities and changes in crop condition.
+        </p>
+
+        <p class="muted">
+            Current status: {{ report.report_status }}
+        </p>
+
+        <a href="{{ url_for('analyze') }}" class="button">
+            Return to My Farm Analysis
+        </a>
+    </div>
+
+</div>
+</body>
+</html>

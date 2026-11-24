@@ -1,0 +1,280 @@
+{
+    "page_title": "किसान पोर्टल",
+    "home": "होम",
+    "farmer_portal": "किसान पोर्टल",
+    "existing_farmer": "मौजूदा किसान",
+
+    "farmer_portal_badge": "किसान पोर्टल",
+    "understand_your_farm": "आइए आपके खेत को समझें।",
+    "farm_intro": "अपने खेत की जानकारी दें ताकि AgroReForm कृषि परिस्थितियों, लागत, उत्पादन और संभावित जोखिम पैटर्न का विश्लेषण कर सके।",
+
+    "farm_data_collection": "खेत का डेटा संग्रह",
+    "your_farm_information": "आपके खेत की जानकारी",
+    "step": "चरण",
+    "farmer_profile": "किसान प्रोफ़ाइल",
+
+    "location_information": "अपने स्थान के बारे में बताएं",
+    "farmer_id_message": "पंजीकरण के बाद आपकी AgroReForm किसान ID अपने आप बनाई जाएगी।",
+
+    "district": "जिला",
+    "district_placeholder": "उदाहरण: बठिंडा",
+
+    "block_tehsil": "ब्लॉक / तहसील",
+    "block_placeholder": "ब्लॉक या तहसील दर्ज करें",
+
+    "village": "गांव",
+    "village_placeholder": "गांव का नाम दर्ज करें",
+
+    "land_ownership": "भूमि का स्वामित्व",
+    "select_ownership": "स्वामित्व चुनें",
+    "own": "अपनी",
+    "leased": "पट्टे पर",
+    "partly_own_leased": "कुछ अपनी + कुछ पट्टे पर",
+
+    "total_farm_area": "कुल खेत का क्षेत्रफल",
+    "farm_area_placeholder": "उदाहरण: 5",
+
+    "area_unit": "क्षेत्रफल की इकाई",
+    "acre": "एकड़",
+    "hectare": "हेक्टेयर",
+    "other": "अन्य",
+
+    "cotton_farm": "कपास का खेत",
+    "crop_information": "अपनी फसल के बारे में बताएं",
+    "primary_research_crop": "मुख्य शोध फसल",
+    "cotton_focus_message": "AgroReForm वर्तमान में पंजाब के मालवा क्षेत्र में कपास की खेती पर केंद्रित है।",
+
+    "crop": "फसल",
+    "cotton_area": "कपास का क्षेत्रफल",
+    "cotton_area_placeholder": "उदाहरण: 5",
+
+    "cotton_variety": "कपास की किस्म",
+    "cotton_variety_placeholder": "किस्म दर्ज करें",
+
+    "farming_year": "कृषि वर्ष",
+    "farming_year_placeholder": "उदाहरण: 2026",
+
+    "previous_crop": "पिछली फसल",
+    "previous_crop_placeholder": "उदाहरण: गेहूं",
+
+    "irrigation_type": "सिंचाई का प्रकार",
+    "select_irrigation": "सिंचाई चुनें",
+    "canal": "नहर",
+    "tube_well": "ट्यूबवेल",
+    "both": "दोनों",
+    "rain_fed": "वर्षा आधारित",
+
+    "number_of_irrigations": "सिंचाई की संख्या",
+    "irrigations_placeholder": "उदाहरण: 6",
+
+    "cultivation_cost": "कृषि लागत",
+    "farm_expenses": "अपने खेत के खर्चों को समझें",
+    "cost_description": "कृषि की अनुमानित लागत दर्ज करें। यह जानकारी AgroReForm को आपकी खेती की आर्थिक स्थिति समझने में मदद करती है।",
+
+    "seed_cost": "बीज की लागत",
+    "fertilizer_cost": "उर्वरक की लागत",
+    "pesticide_cost": "कीटनाशक की लागत",
+    "labour_cost": "मजदूरी की लागत",
+    "irrigation_cost": "सिंचाई की लागत",
+    "machinery_cost": "मशीनरी की लागत",
+    "other_cost": "अन्य लागत",
+
+    "production_return": "उत्पादन और आय",
+    "farm_production_question": "आपके खेत में कितना उत्पादन हुआ?",
+
+    "total_cotton_production": "कुल कपास उत्पादन",
+    "production_placeholder": "उदाहरण: 18",
+
+    "production_unit": "उत्पादन की इकाई",
+    "quintal": "क्विंटल",
+    "ton": "टन",
+
+    "average_selling_price": "प्रति इकाई औसत बिक्री मूल्य",
+    "selling_price_placeholder": "उदाहरण: 7000",
+
+    "major_agricultural_problem": "मुख्य कृषि समस्या",
+    "major_problem_placeholder": "अपनी मुख्य समस्या बताएं",
+
+    "information_has_purpose": "आपकी जानकारी का एक उद्देश्य है।",
+    "information_purpose_message": "AgroReForm आपकी जानकारी का उपयोग खेत-स्तरीय विश्लेषण और निर्णय-सहायता संबंधी जानकारी तैयार करने के लिए करेगा।",
+
+    "submission_message": "जमा करने के बाद आपकी जानकारी कृषि विश्लेषण के लिए संसाधित की जाएगी।",
+    "analyse_my_farm": "मेरे खेत का विश्लेषण करें",
+
+    "farmer_footer_message": "बेहतर कृषि निर्णयों के लिए कृषि बुद्धिमत्ता",
+
+    "hero_subtitle": "AI आधारित कृषि जोखिम विश्लेषण",
+    "hero_subtitle_line2": "और निर्णय सहायता",
+    "hero_tagline": "बेहतर डेटा। बेहतर विश्लेषण। बेहतर निर्णय।",
+
+    "new_farmer_title": "नए किसान का",
+    "registration": "पंजीकरण",
+    "new_farmer_description": "उन किसानों के लिए जो पहली बार AgroReForm का उपयोग कर रहे हैं।",
+    "create_farmer_profile": "किसान प्रोफ़ाइल बनाएं",
+    "register_farm": "खेत पंजीकृत करें",
+    "enter_agricultural_data": "कृषि डेटा दर्ज करें",
+    "generate_farmer_id": "विशिष्ट किसान ID बनाएं",
+    "register_new_farmer": "नए किसान के रूप में पंजीकरण करें",
+
+    "portal": "पोर्टल",
+    "existing_farmer_description": "उन किसानों के लिए जिनकी AgroReForm प्रोफ़ाइल पहले से मौजूद है।",
+    "access_existing_profile": "मौजूदा प्रोफ़ाइल खोलें",
+    "update_farm_information": "खेत की जानकारी अपडेट करें",
+    "add_new_season_data": "नए सीज़न का डेटा जोड़ें",
+    "view_personal_analysis": "अपना विश्लेषण देखें",
+    "farmer_login": "किसान लॉगिन",
+
+    "agricultural": "कृषि",
+    "intelligence_portal": "इंटेलिजेंस पोर्टल",
+    "intelligence_description": "अधिकृत अधिकारियों, शोधकर्ताओं और निर्णय लेने वालों के लिए।",
+    "area_wise_analysis": "क्षेत्रवार विश्लेषण",
+    "district_level_patterns": "जिला स्तर के पैटर्न",
+    "cotton_production_trends": "कपास उत्पादन के रुझान",
+    "maps_graphs_statistics": "मानचित्र, ग्राफ और आंकड़े",
+
+    "footer_message": "बेहतर और अधिक मजबूत कृषि भविष्य के निर्माण के लिए",
+
+    "analysis_page_title": "फार्म विश्लेषण",
+    "analysis_header_subtitle": "कृषि इंटेलिजेंस और निर्णय सहायता",
+    "analysis_farmer_portal": "किसान पोर्टल",
+    "analysis_home": "होम",
+
+    "farm_analysis": "फार्म विश्लेषण",
+    "understanding_your_farm": "अपने खेत को समझें",
+    "analysis_intro": "AgroReForm ने आपके द्वारा दी गई कृषि जानकारी का विश्लेषण करके उसे समझने योग्य वित्तीय और उत्पादन संकेतकों में बदल दिया है।",
+    "farmer_id": "किसान ID",
+
+    "farm_summary": "खेत का सारांश",
+    "farm_summary_description": "इस विश्लेषण के लिए दर्ज की गई मूल जानकारी।",
+    "not_provided": "उपलब्ध नहीं कराया गया",
+
+    "key_financial_indicators": "मुख्य वित्तीय संकेतक",
+    "financial_indicators_description": "आपकी दर्ज की गई खेती की लागत, उत्पादन और बिक्री मूल्य के आधार पर गणना की गई।",
+
+    "total_cultivation_cost": "कुल खेती लागत",
+    "total_cultivation_cost_description": "खेती की विभिन्न लागत श्रेणियों में दर्ज कुल खर्च।",
+
+    "estimated_revenue": "अनुमानित आय",
+    "estimated_revenue_description": "दर्ज उत्पादन और औसत बिक्री मूल्य के आधार पर गणना की गई।",
+
+    "estimated_net_return": "अनुमानित शुद्ध वापसी",
+    "estimated_net_return_description": "अनुमानित आय में से दर्ज खेती की लागत घटाने के बाद की राशि।",
+
+    "production_description": "चयनित कृषि मौसम के लिए दर्ज किया गया उत्पादन।",
+
+    "cultivation_cost_review": "खेती लागत समीक्षा",
+    "cultivation_cost_review_description": "दर्ज खर्च को प्रमुख खेती गतिविधियों में कैसे वितरित किया गया है, इसकी समीक्षा।",
+
+    "seed": "बीज",
+    "fertilizer": "उर्वरक",
+    "pesticide": "कीटनाशक",
+    "labour": "मजदूरी",
+    "irrigation": "सिंचाई",
+    "machinery": "मशीनरी",
+
+    "analytical_indicators": "विश्लेषणात्मक संकेतक",
+    "analytical_indicators_description": "आपके खेत के लिए दर्ज की गई जानकारी से तैयार किए गए संकेतक।",
+
+    "cost_pressure": "लागत दबाव",
+    "cost_pressure_description": "अनुमानित दर्ज आय के प्रतिशत के रूप में दर्ज खेती लागत।",
+
+    "pesticide_cost_share": "कीटनाशक लागत का हिस्सा",
+    "pesticide_cost_share_description": "कुल दर्ज खेती लागत में कीटनाशक खर्च का प्रतिशत।",
+
+    "cotton_farm_information": "कपास खेत की जानकारी",
+    "cotton_farm_information_description": "पंजीकरण के दौरान दर्ज की गई अतिरिक्त कृषि जानकारी।",
+
+    "production_review": "उत्पादन समीक्षा",
+    "production_review_description": "दर्ज कपास क्षेत्र के संदर्भ में उत्पादन का एक सरल विवरण।",
+
+    "production_per_recorded_area": "दर्ज क्षेत्र के अनुसार उत्पादन",
+    "recorded_production": "दर्ज उत्पादन",
+    "recorded_cotton_area": "दर्ज कपास क्षेत्र",
+    "cost_per_production_unit": "उत्पादन की प्रति इकाई लागत",
+
+    "financial_comparison": "वित्तीय तुलना",
+    "financial_comparison_description": "दर्ज की गई खेती की लागत और अनुमानित आय की दृश्य तुलना।",
+
+    "cost_vs_revenue": "लागत बनाम आय",
+    "cost_vs_revenue_description": "दो मुख्य वित्तीय मूल्यों की तुलना।",
+
+    "input_cost_distribution": "इनपुट लागत वितरण",
+    "input_cost_distribution_description": "दर्ज की गई खेती की लागत विभिन्न इनपुट में कैसे वितरित है।",
+
+    "production_trend": "उत्पादन रुझान",
+    "production_trend_description": "जब एक से अधिक कृषि मौसमों का डेटा दर्ज होगा, तब ऐतिहासिक रुझान उपलब्ध होंगे।",
+
+    "season_wise_farm_history": "मौसम के अनुसार खेत का इतिहास",
+    "season_wise_farm_history_description": "सार्थक लाइन चार्ट के लिए एक से अधिक कृषि मौसमों के रिकॉर्ड आवश्यक हैं।",
+
+    "historical_data_not_available": "जब इस खेत के लिए कई कृषि मौसमों का डेटा दर्ज होगा, तब ऐतिहासिक उत्पादन डेटा यहां दिखाई देगा।",
+
+    "cotton_area_share": "कपास क्षेत्र का हिस्सा",
+    "cotton_area_share_description": "दर्ज किए गए कुल खेत क्षेत्र में कपास क्षेत्र का हिस्सा।",
+
+    "cost_per_area": "क्षेत्रफल के अनुसार लागत",
+    "cost_per_area_description": "कपास क्षेत्र के संबंध में दर्ज की गई खेती की लागत।",
+
+    "cultivation_cost_breakdown": "खेती की लागत का विवरण",
+    "cultivation_cost_breakdown_description": "मुख्य खेती के इनपुट पर दर्ज किए गए खर्च की तुलना।",
+
+    "evidence_based_observations": "डेटा-आधारित अवलोकन",
+    "evidence_based_observations_description": "ये अवलोकन आपके खेत के लिए दर्ज किए गए मूल्यों के आधार पर तैयार किए गए हैं।",
+
+    "ai_ml_insight_layer": "AI / ML अंतर्दृष्टि स्तर",
+    "ai_ml_insight_layer_description": "AgroReForm मशीन लर्निंग आधारित पैटर्न पहचान के माध्यम से सांख्यिकीय विश्लेषण को आगे विकसित करने के लिए तैयार किया गया है।",
+
+    "personalized_farm_intelligence": "व्यक्तिगत खेत इंटेलिजेंस",
+    "personalized_farm_intelligence_description": "वर्तमान पृष्ठ सत्यापित कृषि डेटा और सांख्यिकीय संकेतकों का उपयोग करता है। मशीन लर्निंग अंतर्दृष्टि केवल पर्याप्त सत्यापित ऐतिहासिक रिकॉर्ड उपलब्ध होने पर ही तैयार की जानी चाहिए।",
+
+    "data_analysis": "डेटा विश्लेषण",
+    "data_analysis_description": "खेत स्तर की लागत, उत्पादन और इनपुट पैटर्न का विश्लेषण किया जाता है।",
+
+    "pattern_detection": "पैटर्न पहचान",
+    "pattern_detection_description": "भविष्य के ML मॉडल सत्यापित रिकॉर्ड में बार-बार दिखाई देने वाले कृषि पैटर्न की पहचान कर सकते हैं।",
+
+    "farmer_awareness": "किसान जागरूकता",
+    "farmer_awareness_description": "विश्लेषण के निष्कर्षों को सरल और किसान-केंद्रित जागरूकता में बदला जा सकता है।",
+
+    "reported_agricultural_problem": "दर्ज कृषि समस्या",
+    "reported_problem_description": "खेत पंजीकरण के दौरान बताई गई मुख्य समस्या।",
+    "your_recorded_problem": "आपकी दर्ज समस्या",
+    "no_major_problem_reported": "कोई मुख्य समस्या दर्ज नहीं की गई",
+
+    "agroreform_label": "AGROREFORM",
+    "from_data_to_awareness": "डेटा से जागरूकता तक",
+    "awareness_description": "ये संकेतक आपकी दर्ज खेती लागत, उत्पादन और आय के बीच संबंध को समझने में मदद करते हैं। इनका उद्देश्य सूचित निर्णयों में सहायता करना है और ये कृषि विशेषज्ञों या पेशेवर वित्तीय सलाह का स्थान नहीं लेते।",
+
+    "analyse_another_farm": "दूसरे खेत का विश्लेषण करें",
+    "agricultural_intelligence": "कृषि इंटेलिजेंस",
+
+    "analysis_footer": "AgroReForm — बेहतर कृषि निर्णयों के लिए कृषि इंटेलिजेंस",
+    "know_choose_reform": "जानें। चुनें। सुधारें।",
+
+    "amount": "राशि"
+    ,
+"crop_health_badge": "AGROREFORM | फसल स्वास्थ्य",
+"report_cotton_problem": "कपास की फसल की समस्या दर्ज करें",
+"crop_problem_intro": "अपनी कपास की फसल में देखी गई समस्या का विवरण दें ताकि AgroReForm आपको संभावित कारणों और सुझाए गए उपायों को समझने में मदद कर सके।",
+"problem_identification": "समस्या की पहचान",
+"field_observations": "खेत में किए गए अवलोकन",
+"previous_management": "पहले किए गए उपाय",
+"problem_category": "समस्या की श्रेणी",
+"specific_problem": "विशिष्ट समस्या",
+"crop_stage": "फसल की अवस्था",
+"symptoms_observed": "देखे गए लक्षण",
+"affected_area": "प्रभावित क्षेत्र",
+"problem_severity": "समस्या की गंभीरता",
+"previous_action_taken": "पहले की गई कार्रवाई",
+"additional_notes": "अतिरिक्त जानकारी",
+"select_category": "समस्या की श्रेणी चुनें",
+"select_problem": "विशिष्ट समस्या चुनें",
+"select_crop_stage": "फसल की अवस्था चुनें",
+"select_severity": "गंभीरता चुनें",
+"enter_symptoms": "देखे गए लक्षणों का विवरण दें",
+"enter_affected_area": "प्रभावित क्षेत्र दर्ज करें",
+"enter_previous_action": "पहले किए गए उपायों का विवरण दें",
+"enter_additional_notes": "अन्य अवलोकन दर्ज करें",
+"crop_problem_disclaimer": "यह रिपोर्ट किसान द्वारा दिए गए अवलोकनों को दर्ज करती है। यह किसी कृषि विशेषज्ञ द्वारा पुष्टि किया गया निदान नहीं है।",
+"submit_crop_problem_report": "फसल समस्या की रिपोर्ट जमा करें"
+}
